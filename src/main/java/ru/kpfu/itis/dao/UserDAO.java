@@ -37,19 +37,20 @@ public class UserDAO {
 
     public List<User> findByTeamId(int teamId) {
         return jdbcTemplate.query
-                ("SELECT * FROM Person JOIN person_team " +
-                        "ON Person.id = person_team.person_id " +
-                        "and person_team.team_id = ?", new UserMapper(), teamId);
+                ("""
+                        SELECT * FROM Person JOIN person_team
+                        ON Person.id = person_team.person_id 
+                        and person_team.team_id = ?""", new UserMapper(), teamId);
     }
 
     public void save(User user) {
-        jdbcTemplate.update("INSERT INTO Person(username, name, surname, email) VALUES(?, ?, ?, ?)",
-                user.getUsername(), user.getName(), user.getSurname(), user.getEmail());
+        jdbcTemplate.update("INSERT INTO Person(username, name, surname, password) VALUES(?, ?, ?, ?)",
+                user.getUsername(), user.getName(), user.getSurname(), user.getPassword());
     }
 
     public void update(int id, User updatedUser) {
-        jdbcTemplate.update("UPDATE Person SET username=?, name=?, surname=?, email=? WHERE id=?",
-                updatedUser.getSurname(), updatedUser.getName(), updatedUser.getSurname(), updatedUser.getEmail(), id);
+        jdbcTemplate.update("UPDATE Person SET username=?, name=?, surname=?, password=? WHERE id=?",
+                updatedUser.getSurname(), updatedUser.getName(), updatedUser.getSurname(), updatedUser.getPassword(), id);
     }
 
     public void delete(int id) {
@@ -60,4 +61,5 @@ public class UserDAO {
         return jdbcTemplate.query("SELECT * FROM Person WHERE username=?", new UserMapper(), username)
                 .stream().findAny().orElse(null);
     }
+
 }

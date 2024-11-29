@@ -17,6 +17,8 @@
 
     <a href="${pageContext.request.contextPath}/team/edit?team_id=${team.getId()}">Обновить команду</a>
 
+    <br>
+
     <a href="${pageContext.request.contextPath}/team/add-user?team_id=${team.id}">Добавить участника</a>
 
     <form action="<c:url value='/team/${team.getId()}'/>" method="POST">
