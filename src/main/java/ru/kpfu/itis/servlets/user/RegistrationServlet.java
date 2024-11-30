@@ -38,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             // Если данные некорректные, отправляем обратно на регистрацию
             req.setAttribute("error", "Пожалуйста, введите имя пользователя и пароль.");
-            req.getRequestDispatcher("registration.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/user/registration.jsp").forward(req, resp);
             return;
         }
 
@@ -52,9 +52,8 @@ public class RegistrationServlet extends HttpServlet {
 
         // Сохранение информации пользователя в сессии
         HttpSession session = req.getSession();
-        session.setAttribute("username", username);
-        session.setAttribute("name", name);
-        session.setAttribute("surname", surname);
+        session.setAttribute("user", user);
+
 
         // Перенаправляем пользователя на страницу профиля
         resp.sendRedirect(req.getContextPath() + "/profile");
