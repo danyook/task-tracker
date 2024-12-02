@@ -2,10 +2,7 @@ package ru.kpfu.itis.services;
 
 import ru.kpfu.itis.dao.TeamDAO;
 import ru.kpfu.itis.dao.UserDAO;
-import ru.kpfu.itis.entities.Section;
-import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.Team;
-import ru.kpfu.itis.util.DbException;
 
 import java.util.List;
 

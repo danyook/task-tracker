@@ -9,13 +9,11 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Удаляем текущую сессию
-        HttpSession session = req.getSession(false); // Получаем текущую сессию, если она существует
+        HttpSession session = req.getSession(false);
         if (session != null) {
-            session.invalidate(); // Уничтожаем сессию
+            session.invalidate();
         }
 
-        // Перенаправляем пользователя на главную страницу или страницу входа
         resp.sendRedirect(req.getContextPath() + "/login");
     }
 }

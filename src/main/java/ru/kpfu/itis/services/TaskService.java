@@ -1,9 +1,7 @@
 package ru.kpfu.itis.services;
 
 import ru.kpfu.itis.dao.TaskDAO;
-import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Task;
-import ru.kpfu.itis.util.DbException;
 
 import java.util.List;
 

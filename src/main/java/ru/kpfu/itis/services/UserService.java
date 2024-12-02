@@ -1,12 +1,9 @@
 package ru.kpfu.itis.services;
 
-import ru.kpfu.itis.dao.TaskDAO;
 import ru.kpfu.itis.dao.UserDAO;
-import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.User;
-import ru.kpfu.itis.util.DbException;
+import ru.kpfu.itis.exception.NotFoundUserException;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,6 +50,17 @@ public class UserService {
 
     public User findByUsername(String username) {
         return userDAO.findByUsername(username);
+    }
+
+    public boolean checkPass(String username, String pass) {
+        User user = userDAO.findByUsername(username);
+        if (user == null) {
+            throw new NotFoundUserException("User with this username not found");
+        }
+
+        String truePass = user.getPassword();
+
+        return (pass.equals(truePass));
     }
 
 }

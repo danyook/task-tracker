@@ -1,6 +1,4 @@
-package ru.kpfu.itis.util;
-
-import java.sql.SQLException;
+package ru.kpfu.itis.exception;
 
 public class DbException extends RuntimeException {
     public DbException() {

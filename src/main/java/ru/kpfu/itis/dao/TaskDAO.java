@@ -5,7 +5,6 @@ import ru.kpfu.itis.dao.mappers.TaskMapper;
 import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.enums.TaskStatus;
 import ru.kpfu.itis.util.ConnectionProvider;
-import ru.kpfu.itis.util.DbException;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.List;

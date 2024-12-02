@@ -4,6 +4,7 @@ import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 import ru.kpfu.itis.services.UserService;
+import ru.kpfu.itis.util.PassEncrypt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -28,15 +29,13 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Получаем данные от пользователя
+
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        System.out.println(name + " " + surname);
+        String password = PassEncrypt.encrypt(req.getParameter("password"));
 
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            // Если данные некорректные, отправляем обратно на регистрацию
             req.setAttribute("error", "Пожалуйста, введите имя пользователя и пароль.");
             req.getRequestDispatcher("/WEB-INF/views/user/registration.jsp").forward(req, resp);
             return;
@@ -47,15 +46,11 @@ public class RegistrationServlet extends HttpServlet {
         user.setSurname(surname);
         user.setUsername(username);
         user.setPassword(password);
-        System.out.println(user);
         userService.save(user);
 
-        // Сохранение информации пользователя в сессии
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
 
-
-        // Перенаправляем пользователя на страницу профиля
         resp.sendRedirect(req.getContextPath() + "/profile");
     }
 }

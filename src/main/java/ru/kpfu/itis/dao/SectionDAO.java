@@ -5,7 +5,6 @@ import ru.kpfu.itis.dao.mappers.SectionMapper;
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.enums.SectionRole;
 import ru.kpfu.itis.util.ConnectionProvider;
-import ru.kpfu.itis.util.DbException;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.List;

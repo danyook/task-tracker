@@ -1,20 +1,16 @@
 package ru.kpfu.itis;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.kpfu.itis.dao.SectionDAO;
 import ru.kpfu.itis.dao.TaskDAO;
 import ru.kpfu.itis.dao.TeamDAO;
 import ru.kpfu.itis.dao.UserDAO;
-import ru.kpfu.itis.entities.Team;
-import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 import ru.kpfu.itis.services.TeamService;
 import ru.kpfu.itis.services.UserService;
 import ru.kpfu.itis.util.ConnectionProvider;
-import ru.kpfu.itis.util.DbConfig;
-import ru.kpfu.itis.util.DbException;
+import ru.kpfu.itis.exception.DbException;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import javax.servlet.ServletContextEvent;

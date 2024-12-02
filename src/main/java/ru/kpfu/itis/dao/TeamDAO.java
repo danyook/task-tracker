@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import ru.kpfu.itis.dao.mappers.TeamMapper;
 import ru.kpfu.itis.entities.Team;
 import ru.kpfu.itis.util.ConnectionProvider;
-import ru.kpfu.itis.util.DbException;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.List;
