@@ -23,6 +23,14 @@ public class SectionService {
         return sectionDAO.findAll();
     }
 
+    public List<Section> findByUserId(int id) {
+        return sectionDAO.findByUserId(id);
+    }
+
+    public List<Section> findByTeamId(int id) {
+        return sectionDAO.findByTeamId(id);
+    }
+
     public Section findOne(int id) {
         return sectionDAO.findById(id);
     }

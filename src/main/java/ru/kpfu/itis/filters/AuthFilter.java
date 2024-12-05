@@ -14,7 +14,6 @@ public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Инициализация фильтра (если необходимо)
     }
 
     @Override
@@ -32,20 +31,14 @@ public class AuthFilter implements Filter {
 
         String uri = httpRequest.getRequestURI();
 
-        // Проверяем, авторизован ли пользователь
         if (user == null && !uri.contains("login") && !uri.contains("registration")) {
-            // Если пользователь не авторизован, перенаправляем на страницу /login
-            System.out.println(1);
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
-            System.out.println(2);
         } else {
-            // Если пользователь авторизован, продолжить выполнение цепочки фильтров/сервлетов
             chain.doFilter(request, response);
         }
     }
 
     @Override
     public void destroy() {
-        // Очистка ресурсов фильтра (если необходимо)
     }
 }

@@ -1,4 +1,4 @@
-package ru.kpfu.itis.servlets.section;
+package ru.kpfu.itis.servlets.section.solo;
 
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.services.SectionService;

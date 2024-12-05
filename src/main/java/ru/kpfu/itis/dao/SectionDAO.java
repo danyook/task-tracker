@@ -30,6 +30,16 @@ public class SectionDAO {
         return jdbcTemplate.query("SELECT * FROM Section", new SectionMapper());
     }
 
+    public List<Section> findByUserId(int id) {
+        return jdbcTemplate.query("SELECT * FROM Section WHERE person_id=?",
+                new SectionMapper(), id);
+    }
+
+     public List<Section> findByTeamId(int id) {
+        return jdbcTemplate.query("SELECT * FROM Section WHERE team_id=?",
+                new SectionMapper(), id);
+    }
+
     public Section findById(int id) {
         return jdbcTemplate.query("SELECT * FROM Section WHERE id=?", new SectionMapper(), id).
                 stream().findAny().orElse(null);

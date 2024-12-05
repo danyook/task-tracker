@@ -1,4 +1,4 @@
-package ru.kpfu.itis.servlets.section;
+package ru.kpfu.itis.servlets.section.team;
 
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.UserService;
@@ -26,11 +26,9 @@ public class SoloSectionListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("sections", sectionService.findAll());
+        req.setAttribute("sections", sectionService.findByUserId(1));
         getServletContext().getRequestDispatcher("/WEB-INF/views/section/list.jsp").forward(req, resp);
 
     }
-
-
 
 }
