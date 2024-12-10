@@ -28,8 +28,12 @@ public class TaskService {
         return taskDAO.findById(id);
     }
 
-    public List<Task> findBySectionId(int id) {
-        return taskDAO.findBySectionId(id);
+    public List<Task> findNotDoneTasksBySectionId(int sectionId) {
+        return taskDAO.findNotDoneTasksBySectionId(sectionId);
+    }
+
+    public List<Task> findDoneTasks(int personId) {
+        return taskDAO.findDoneTasks(personId);
     }
 
     public void save(Task task) {

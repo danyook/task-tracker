@@ -34,8 +34,12 @@ public class TaskDAO {
                 stream().findAny().orElse(null);
     }
 
-    public List<Task> findBySectionId(int section_id) {
-        return jdbcTemplate.query("SELECT * FROM Task WHERE section_id=?", new TaskMapper(), section_id);
+    public List<Task> findNotDoneTasksBySectionId(int sectionId) {
+        return jdbcTemplate.query("SELECT * FROM Task WHERE section_id=? AND status=?", new TaskMapper(), sectionId, TaskStatus.NOTDONE.name());
+    }
+
+    public List<Task> findDoneTasks(int personId) {
+        return jdbcTemplate.query("SELECT * FROM done_tasks_archive WHERE person_id=?", new TaskMapper(), personId);
     }
 
     public void save(Task task) {
