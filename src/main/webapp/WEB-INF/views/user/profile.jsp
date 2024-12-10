@@ -13,6 +13,7 @@
             <p><strong>Фамилия:</strong> ${sessionScope.user.surname}</p>
 
             <a href="${pageContext.request.contextPath}/solo-section">Мои задачи</a>
+            <br>
             <a href="${pageContext.request.contextPath}/team">Мои команды</a>
 
             <!-- Кнопка выхода -->

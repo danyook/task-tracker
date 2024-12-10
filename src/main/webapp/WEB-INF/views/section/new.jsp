@@ -4,7 +4,7 @@
 
 <t:mainLayout title="New">
 
-<form action="<c:url value="/section/new"/>" method="POST">
+<form action="<c:url value="/solo-section/new"/>" method="POST">
     <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
     <br/>
     <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >

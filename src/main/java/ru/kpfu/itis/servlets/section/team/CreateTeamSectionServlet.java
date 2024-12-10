@@ -1,4 +1,4 @@
-package ru.kpfu.itis.servlets.section.solo;
+package ru.kpfu.itis.servlets.section.team;
 
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.enums.SectionRole;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/solo-section/new")
-public class CreateSoloSectionServlet extends HttpServlet {
+@WebServlet("/team-section/new")
+public class CreateTeamSectionServlet extends HttpServlet {
 
     private SectionService sectionService;
     private UserService userService;
@@ -51,7 +51,7 @@ public class CreateSoloSectionServlet extends HttpServlet {
 
         sectionService.save(section);
 
-        resp.sendRedirect(req.getContextPath() + "/solo-section");
+        resp.sendRedirect(req.getContextPath() + "/team-section");
 
     }
 

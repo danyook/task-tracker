@@ -20,7 +20,7 @@
         <input type="submit" value="Delete task!"/>
     </form>
 
-    <a href="${pageContext.request.contextPath}/section/${section.getId()}">Назад к списку задач</a>
+    <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">Назад к списку задач</a>
 
 
 </t:mainLayout>

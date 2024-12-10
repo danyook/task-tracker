@@ -58,7 +58,7 @@ public class UpdateSoloSectionServlet extends HttpServlet {
 
         sectionService.update(id, section);
 
-        resp.sendRedirect(req.getContextPath() + "/section/" + id);
+        resp.sendRedirect(req.getContextPath() + "/solo-section/" + id);
     }
 
 }

@@ -1,4 +1,4 @@
-package ru.kpfu.itis.servlets.section.solo;
+package ru.kpfu.itis.servlets.section.team;
 
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.services.SectionService;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/solo-section/*")
-public class SoloSectionDetailServlet extends HttpServlet {
+@WebServlet("/team-section/*")
+public class TeamSectionDetailServlet extends HttpServlet {
     private SectionService sectionService;
     private TaskService taskService;
     private UserService userService;
@@ -67,7 +67,7 @@ public class SoloSectionDetailServlet extends HttpServlet {
         if (sectionId == null) return;
 
         sectionService.delete(sectionId);
-        resp.sendRedirect(req.getContextPath() + "/solo-section");
+        resp.sendRedirect(req.getContextPath() + "/team-section");
     }
 }
 

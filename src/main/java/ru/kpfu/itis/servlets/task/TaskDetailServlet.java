@@ -77,6 +77,6 @@ public class TaskDetailServlet extends HttpServlet {
         if (taskId == null) return;
 
         taskService.delete(taskId);
-        resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
+        resp.sendRedirect(req.getContextPath() + "/solo-section" + sectionId);
     }
 }
