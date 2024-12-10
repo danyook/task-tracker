@@ -14,6 +14,8 @@
     </c:forEach>
 </ul>
 
+    <a href="${pageContext.request.contextPath}/done-tasks">Архив выполненных задач</a>
+
 <br/>
 <hr/>
 

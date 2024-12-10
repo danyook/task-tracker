@@ -29,7 +29,7 @@ public class DoneTaskListServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         req.setAttribute("doneTasks", taskService.findDoneTasks(user.getId()));
-        getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/list.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/section/done-tasks.jsp").forward(req, resp);
     }
 
     @Override
