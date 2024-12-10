@@ -45,7 +45,7 @@ public class SoloSectionDetailServlet extends HttpServlet {
         if (section != null) {
             req.setAttribute("section", section);
             req.setAttribute("tasks", taskService.findBySectionId(sectionId));
-            getServletContext().getRequestDispatcher("/WEB-INF/views/section/detail.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/detail.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }

@@ -17,7 +17,7 @@
     <form action="<c:url value='/task/${task.getId()}'/>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="hidden" name="section_id" value="${section.getId()}"/>
-        <input type="submit" value="Delete task!"/>
+        <input type="submit" value="Удалить задачу!"/>
     </form>
 
     <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">Назад к списку задач</a>

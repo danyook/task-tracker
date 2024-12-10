@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+//todo поменять под с solo на team
 @WebServlet("/team-section/new")
 public class CreateTeamSectionServlet extends HttpServlet {
 

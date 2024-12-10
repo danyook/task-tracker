@@ -15,6 +15,7 @@
             <a href="${pageContext.request.contextPath}/solo-section">Мои задачи</a>
             <br>
             <a href="${pageContext.request.contextPath}/team">Мои команды</a>
+            <br>
 
             <!-- Кнопка выхода -->
             <form action="${pageContext.request.contextPath}/logout" method="post">
@@ -22,7 +23,7 @@
             </form>
         </c:when>
         <c:otherwise>
-            <p>Вы не авторизованы. <a href="${pageContext.request.contextPath}/login">Войти</a></p>
+            <p>Вы не авторизованы. <a href="${pageContext.request.contextPath}/login">Нажмите, чтобы войти</a></p>
         </c:otherwise>
     </c:choose>
 

@@ -11,7 +11,7 @@
         <br/>
         <input name="owner" type="text" placeholder="new owner" <c:out value="${owner}"/> > <%-- Сделать выпадающий список для выбора нового владельца --%>
         <br/>
-        <input type="submit" value="Update list!"/>
+        <input type="submit" value="Обновить команду!"/>
     </form>
 
 </t:mainLayout>

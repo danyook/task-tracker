@@ -9,7 +9,7 @@
         <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
         <input name="description" type="text" placeholder="Description" <c:out value="${description}"/> >
 
-        <input type="submit" value="Create!"/>
+        <input type="submit" value="Создать!"/>
 
     </form>
 

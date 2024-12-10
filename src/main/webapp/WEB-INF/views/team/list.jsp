@@ -17,7 +17,7 @@
     <br/>
     <hr/>
 
-    <a href="${pageContext.request.contextPath}/team/new">Create new team</a>
+    <a href="${pageContext.request.contextPath}/team/new">Создать новую команду</a>
 
 
 </t:mainLayout>

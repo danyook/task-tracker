@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+//todo поменять под с solo на team
 @WebServlet("/team-section")
 public class TeamSectionListServlet extends HttpServlet {
 
@@ -30,7 +31,7 @@ public class TeamSectionListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        req.setAttribute("sections", sectionService.findByUserId(user.getId())); //todo сделать получение айдит текущего пользователя
+        req.setAttribute("sections", sectionService.findByUserId(user.getId())); //todo сделать получение секций по айди текущей команды
         getServletContext().getRequestDispatcher("/WEB-INF/views/section/list.jsp").forward(req, resp);
 
     }

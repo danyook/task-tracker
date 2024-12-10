@@ -7,7 +7,7 @@
     <form action="<c:url value="/team/new"/>" method="POST">
         <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
 
-        <input type="submit" value="Create!"/>
+        <input type="submit" value="Создать!"/>
 
     </form>
 

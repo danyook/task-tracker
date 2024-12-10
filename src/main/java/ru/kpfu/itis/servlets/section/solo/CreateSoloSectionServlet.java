@@ -30,7 +30,7 @@ public class CreateSoloSectionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/views/section/new.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/new.jsp").forward(req, resp);
     }
 
     @Override

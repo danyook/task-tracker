@@ -22,7 +22,7 @@
 
         <label for="password">Пароль:</label><br>
         <input type="password" name="password" id="password" required /><br><br>
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Зарегистрироваться!</button>
     </form>
 
 </t:mainLayout>

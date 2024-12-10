@@ -10,7 +10,7 @@
         <br/>
         <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >
         <br/>
-        <input type="submit" value="Update list!"/>
+        <input type="submit" value="Изменить список!"/>
     </form>
 
 </t:mainLayout>

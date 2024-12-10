@@ -20,9 +20,11 @@
 
         <br>
 
-        <input type="submit" value="Login!"/>
+        <input type="submit" value="Войти!"/>
 
-        <a href="${pageContext.request.contextPath}/registration">Registration</a>
+        <br>
+
+        <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
     </form>
 
 </t:mainLayout>

@@ -45,7 +45,6 @@ public class CreateTeamServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        System.out.println(user);
 
         Team team = new Team();
         team.setName(name);
@@ -53,7 +52,6 @@ public class CreateTeamServlet extends HttpServlet {
 
         int savedTeamId = teamService.save(team);
         teamService.addPersonToTeam(user.getId(), savedTeamId);
-        System.out.println(savedTeamId);
 
         resp.sendRedirect(req.getContextPath() + "/team");
 

@@ -9,7 +9,7 @@
     <br/>
     <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >
 
-    <input type="submit" value="Create!"/>
+    <input type="submit" value="Создать!"/>
 
 </form>
 

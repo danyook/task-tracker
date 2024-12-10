@@ -17,7 +17,7 @@
 <br/>
 <hr/>
 
-<a href="${pageContext.request.contextPath}/solo-section/new">Create new list</a>
+<a href="${pageContext.request.contextPath}/solo-section/new">Создать новый список</a>
 
 <br>
 

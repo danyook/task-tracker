@@ -49,7 +49,7 @@ public class TeamDetailServlet extends HttpServlet {
         Team team = teamService.findOne(teamId);
         if (team != null) {
             req.setAttribute("team", team);
-            req.setAttribute("users", userService.findByTeamId(teamId));//todo сделать получение команд по айди того человека, кто авторизован
+            req.setAttribute("users", userService.findByTeamId(teamId));
 
             getServletContext().getRequestDispatcher("/WEB-INF/views/team/detail.jsp").forward(req, resp);
         } else {

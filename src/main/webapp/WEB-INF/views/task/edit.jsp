@@ -12,7 +12,7 @@
         <br/>
         <input name="description" type="text" placeholder="Description" <c:out value="${description}"/> >
         <br/>
-        <input type="submit" value="Update task!"/>
+        <input type="submit" value="Обновить задачу!"/>
     </form>
 
 </t:mainLayout>

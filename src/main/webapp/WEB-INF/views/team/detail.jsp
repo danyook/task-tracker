@@ -23,7 +23,7 @@
 
     <form action="<c:url value='/team/${team.getId()}'/>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
-        <input type="submit" value="Delete team!"/>
+        <input type="submit" value="Удалить команду!"/>
     </form>
 
     <a href="${pageContext.request.contextPath}/team">Назад к списку команд</a>

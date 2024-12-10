@@ -30,8 +30,8 @@ public class SoloSectionListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        req.setAttribute("sections", sectionService.findByUserId(user.getId())); //todo сделать получение айдит текущего пользователя
-        getServletContext().getRequestDispatcher("/WEB-INF/views/section/list.jsp").forward(req, resp);
+        req.setAttribute("sections", sectionService.findByUserId(user.getId()));
+        getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/list.jsp").forward(req, resp);
 
     }
 

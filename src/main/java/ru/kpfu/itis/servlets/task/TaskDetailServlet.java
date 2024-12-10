@@ -40,7 +40,7 @@ public class TaskDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sectionIdParam = req.getParameter("section_id");
-        System.out.println(sectionIdParam);
+
         Integer sectionId = Integer.parseInt(sectionIdParam);
         req.setAttribute("section_id", sectionIdParam);
 
@@ -77,6 +77,6 @@ public class TaskDetailServlet extends HttpServlet {
         if (taskId == null) return;
 
         taskService.delete(taskId);
-        resp.sendRedirect(req.getContextPath() + "/solo-section" + sectionId);
+        resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
     }
 }
