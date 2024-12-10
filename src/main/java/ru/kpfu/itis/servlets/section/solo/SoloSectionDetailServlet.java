@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/section/*")
+@WebServlet("/solo-section/*")
 public class SoloSectionDetailServlet extends HttpServlet {
     private SectionService sectionService;
     private TaskService taskService;

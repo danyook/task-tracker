@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession httpSession = req.getSession();
                 httpSession.setAttribute("user", user);
                 httpSession.setMaxInactiveInterval(60 * 60);
-                resp.sendRedirect(req.getContextPath() + "/section");
+                resp.sendRedirect(req.getContextPath() + "/profile");
 
             } else {
                 resp.sendRedirect(req.getContextPath() + "/login");

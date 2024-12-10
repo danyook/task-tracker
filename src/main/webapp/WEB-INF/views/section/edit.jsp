@@ -4,7 +4,7 @@
 
 <t:mainLayout title="New">
 
-    <form action="<c:url value='/section/edit'/>" method="POST">
+    <form action="<c:url value='/solo-section/edit'/>" method="POST">
         <input type="hidden" name="section_id" value="${section_id}"/>
         <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
         <br/>

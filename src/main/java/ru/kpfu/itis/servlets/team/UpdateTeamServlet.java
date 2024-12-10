@@ -47,6 +47,7 @@ public class UpdateTeamServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("team_id"));
 
         String name = req.getParameter("name");
+
         User user = userService.findOne(1);//todo сделать назначение пользователя, которого выбрал владелец
 
         Team team = new Team();

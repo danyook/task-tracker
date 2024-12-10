@@ -12,6 +12,9 @@
             <p><strong>Имя:</strong> ${sessionScope.user.name}</p>
             <p><strong>Фамилия:</strong> ${sessionScope.user.surname}</p>
 
+            <a href="${pageContext.request.contextPath}/solo-section">Мои задачи</a>
+            <a href="${pageContext.request.contextPath}/team">Мои команды</a>
+
             <!-- Кнопка выхода -->
             <form action="${pageContext.request.contextPath}/logout" method="post">
                 <button type="submit">Выйти</button>

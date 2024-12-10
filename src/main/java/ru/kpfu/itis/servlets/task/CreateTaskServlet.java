@@ -57,7 +57,7 @@ public class CreateTaskServlet extends HttpServlet {
 
         taskService.save(task);
 
-        resp.sendRedirect(req.getContextPath() + "/section/" + section_id);
+        resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
 
     }
 

@@ -34,8 +34,8 @@ public class TeamService {
         return teamDAO.findByPersonId(personId);
     }
 
-    public void save(Team team) {
-        teamDAO.save(team);
+    public int save(Team team) {
+        return teamDAO.save(team);
     }
 
     public void update(int id, Team updatedTeam) {

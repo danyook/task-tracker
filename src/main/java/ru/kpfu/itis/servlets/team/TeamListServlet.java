@@ -1,5 +1,6 @@
 package ru.kpfu.itis.servlets.team;
 
+import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TeamService;
 import ru.kpfu.itis.services.UserService;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/team")
@@ -29,7 +31,10 @@ public class TeamListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("teams", teamService.findAll());
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+
+        req.setAttribute("teams", teamService.findByPeronId(user.getId()));
         getServletContext().getRequestDispatcher("/WEB-INF/views/team/list.jsp").forward(req, resp);
 
     }

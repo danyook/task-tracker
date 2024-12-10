@@ -9,7 +9,7 @@
 <ul>
     <c:forEach var="section" items="${sections}">
         <li>
-            <a href="${pageContext.request.contextPath}/section/${section.getId()}">${section.getName()}</a>
+            <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">${section.getName()}</a>
         </li>
     </c:forEach>
 </ul>
@@ -17,14 +17,9 @@
 <br/>
 <hr/>
 
-<a href="${pageContext.request.contextPath}/section/new">Create new list</a>
+<a href="${pageContext.request.contextPath}/solo-section/new">Create new list</a>
 
 <br>
-
-<a href="${pageContext.request.contextPath}/team">Список мои команд</a>
-
-
-
 
 </t:mainLayout>
 

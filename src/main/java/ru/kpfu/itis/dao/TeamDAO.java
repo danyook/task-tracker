@@ -1,6 +1,8 @@
 package ru.kpfu.itis.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import ru.kpfu.itis.dao.mappers.TeamMapper;
 import ru.kpfu.itis.entities.Team;
 import ru.kpfu.itis.util.ConnectionProvider;
@@ -38,18 +40,31 @@ public class TeamDAO {
     public List<Team> findByPersonId(int personId) {
         return jdbcTemplate.query
                 ("SELECT * FROM Team JOIN person_team " +
-                        "ON Team.id = person_team.person_id " +
+                        "ON Team.id = person_team.team_id " +
                         "and person_team.person_id = ?", new TeamMapper(userDAO), personId);
     }
 
-    public void save(Team team) {
-        jdbcTemplate.update("INSERT INTO Team(name) VALUES(?)",
-                team.getName());
+    public int save(Team team) {
+//        jdbcTemplate.update("INSERT INTO Team(name, owner_id) VALUES(?,?)",
+//                team.getName(), team.getOwner().getId());
+//        return team;
+
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
+                .withTableName("Team")
+                .usingGeneratedKeyColumns("id"); // Укажите имя столбца сгенерированного ключа
+
+        // Подготовка параметров
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
+        parameters.addValue("name", team.getName());
+        parameters.addValue("owner_id", team.getOwner().getId());
+
+        // Выполнение вставки и получение сгенерированного ключа
+        return jdbcInsert.executeAndReturnKey(parameters).intValue();
     }
 
     public void update(int id, Team updatedTeam) {
-        jdbcTemplate.update("UPDATE Team SET name=? WHERE id=?",
-                updatedTeam.getName(), id);
+        jdbcTemplate.update("UPDATE Team SET name=?, owner_id=? WHERE id=?",
+                updatedTeam.getName(), updatedTeam.getOwner().getId(), id);
     }
 
     public void delete(int id) {

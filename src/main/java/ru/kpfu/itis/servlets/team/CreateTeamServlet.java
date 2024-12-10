@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/team/new")
@@ -41,13 +42,18 @@ public class CreateTeamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        User user = userService.findOne(1); //todo сделать назначение владельца тем, кто авторизовать и создает команду
+
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        System.out.println(user);
 
         Team team = new Team();
         team.setName(name);
         team.setOwner(user);
 
-        teamService.save(team);
+        int savedTeamId = teamService.save(team);
+        teamService.addPersonToTeam(user.getId(), savedTeamId);
+        System.out.println(savedTeamId);
 
         resp.sendRedirect(req.getContextPath() + "/team");
 

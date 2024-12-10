@@ -17,14 +17,14 @@
     <a href="${pageContext.request.contextPath}/task/new?section_id=${section.getId()}">Create new task</a>
     <br/>
 
-    <a href="${pageContext.request.contextPath}/section/edit?section_id=${section.getId()}">Обновить список</a>
+    <a href="${pageContext.request.contextPath}/solo-section/edit?section_id=${section.getId()}">Обновить список</a>
 
-    <form action="<c:url value='/section/${section.getId()}'/>" method="POST">
+    <form action="<c:url value='/solo-section/${section.getId()}'/>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="submit" value="Delete list!"/>
     </form>
 
-    <a href="${pageContext.request.contextPath}/section">Назад к списку секций</a>
+    <a href="${pageContext.request.contextPath}/solo-section">Назад к списку секций</a>
 
 
 </t:mainLayout>

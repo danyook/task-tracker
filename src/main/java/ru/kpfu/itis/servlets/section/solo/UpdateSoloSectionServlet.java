@@ -14,9 +14,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/section/edit")
+@WebServlet("/solo-section/edit")
 public class UpdateSoloSectionServlet extends HttpServlet {
     private SectionService sectionService;
     private TaskService taskService;
@@ -45,7 +46,8 @@ public class UpdateSoloSectionServlet extends HttpServlet {
         SectionRole sectionRole = SectionRole.SOLO;
         SectionType sectionType = SectionType.valueOf(req.getParameter("type"));
 
-        User user = userService.findOne(1);//todo сделать получение ай ди текущего пользователя
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
 
         Section section = new Section();
 
