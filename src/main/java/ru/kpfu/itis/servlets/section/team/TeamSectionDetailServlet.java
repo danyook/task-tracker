@@ -45,7 +45,7 @@ public class TeamSectionDetailServlet extends HttpServlet {
         Section section = sectionService.findOne(sectionId);
         if (section != null) {
             req.setAttribute("section", section);
-            req.setAttribute("tasks", taskService.findBySectionId(sectionId));
+            req.setAttribute("tasks", taskService.findNotDoneTasksBySectionId(sectionId));
             getServletContext().getRequestDispatcher("/WEB-INF/views/section/detail.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
