@@ -23,12 +23,12 @@ public class SectionService {
         return sectionDAO.findAll();
     }
 
-    public List<Section> findByUserId(int id) {
-        return sectionDAO.findByUserId(id);
+    public List<Section> findByUserId(int userId) {
+        return sectionDAO.findByUserId(userId);
     }
 
-    public List<Section> findByTeamId(int id) {
-        return sectionDAO.findByTeamId(id);
+    public List<Section> findByTeamId(int teamId) {
+        return sectionDAO.findByTeamId(teamId);
     }
 
     public Section findOne(int id) {

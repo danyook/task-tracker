@@ -48,10 +48,8 @@ public class TaskDetailServlet extends HttpServlet {
         if (taskId == null) return;
 
         Task task = taskService.findOne(taskId);
-        Section section = sectionService.findOne(sectionId);
         if (task != null) {
             req.setAttribute("task", task);
-            req.setAttribute("section", section);
             getServletContext().getRequestDispatcher("/WEB-INF/views/task/detail.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);

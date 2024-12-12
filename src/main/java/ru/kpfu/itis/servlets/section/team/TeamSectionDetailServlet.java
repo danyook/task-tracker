@@ -39,14 +39,19 @@ public class TeamSectionDetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String teamIdParam = req.getParameter("team_id");
+        req.setAttribute("team_id", teamIdParam);
+
         Integer sectionId = extractSectionId(req, resp);
-        if (sectionId == null) return;
+        if (sectionId == null) {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
 
         Section section = sectionService.findOne(sectionId);
         if (section != null) {
             req.setAttribute("section", section);
             req.setAttribute("tasks", taskService.findNotDoneTasksBySectionId(sectionId));
-            getServletContext().getRequestDispatcher("/WEB-INF/views/section/detail.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/section/team/detail.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
@@ -65,10 +70,20 @@ public class TeamSectionDetailServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer sectionId = extractSectionId(req, resp);
-        if (sectionId == null) return;
+        String teamIdParam = req.getParameter("team_id");
+        if (teamIdParam == null) {
+            System.out.println("team id param null");
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+        System.out.println("team id param done");
+        int teamId = Integer.parseInt(teamIdParam);
+
+        if (sectionId == null) {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
 
         sectionService.delete(sectionId);
-        resp.sendRedirect(req.getContextPath() + "/team-section");
+        resp.sendRedirect(req.getContextPath() + "/team-section?team_id=" + teamId);
     }
 }
 

@@ -30,14 +30,14 @@ public class SectionDAO {
         return jdbcTemplate.query("SELECT * FROM Section", new SectionMapper());
     }
 
-    public List<Section> findByUserId(int id) {
-        return jdbcTemplate.query("SELECT * FROM Section WHERE person_id=?",
-                new SectionMapper(), id);
+    public List<Section> findByUserId(int userId) {
+        return jdbcTemplate.query("SELECT * FROM Section WHERE person_id=? AND role=?",
+                new SectionMapper(), userId, SectionRole.SOLO.name());
     }
 
-     public List<Section> findByTeamId(int id) {
-        return jdbcTemplate.query("SELECT * FROM Section WHERE team_id=?",
-                new SectionMapper(), id);
+     public List<Section> findByTeamId(int teamId) {
+        return jdbcTemplate.query("SELECT * FROM Section WHERE team_id=? AND role=?",
+                new SectionMapper(), teamId, SectionRole.TEAM.name());
     }
 
     public Section findById(int id) {
@@ -49,7 +49,7 @@ public class SectionDAO {
         if (section.getRole().equals(SectionRole.SOLO) && section.getUser() != null) {
             jdbcTemplate.update("INSERT INTO Section(name, type, role, person_id) VALUES(?, ?, ?, ?)",
                     section.getName(), section.getType().name(), section.getRole().name(), section.getUser().getId());
-        } else if (section.getRole().equals(SectionRole.TEAM) && section.getUser() != null) {
+        } else if (section.getRole().equals(SectionRole.TEAM) && section.getTeam() != null) {
             jdbcTemplate.update("INSERT INTO Section(name, type, role, team_id) VALUES(?, ?, ?, ?)",
                     section.getName(), section.getType().name(), section.getRole().name(), section.getTeam().getId());
         } else {

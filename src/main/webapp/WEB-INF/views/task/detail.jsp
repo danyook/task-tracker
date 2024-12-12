@@ -12,15 +12,15 @@
     </ul>
 
 
-    <a href="${pageContext.request.contextPath}/task//edit?task_id=${task.getId()}&section_id=${section.getId()}">Обновить задачу</a>
+    <a href="${pageContext.request.contextPath}/task/edit?task_id=${task.getId()}&section_id=${section_id}">Обновить задачу</a>
 
     <form action="<c:url value='/task/${task.getId()}'/>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
-        <input type="hidden" name="section_id" value="${section.getId()}"/>
+        <input type="hidden" name="section_id" value="${section_id}"/>
         <input type="submit" value="Удалить задачу!"/>
     </form>
 
-    <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">Назад к списку задач</a>
+    <a href="${pageContext.request.contextPath}/solo-section/${section_id}">Назад к списку задач</a>
 
 
 </t:mainLayout>

@@ -14,6 +14,9 @@
         </c:forEach>
     </ul>
 
+    <a href="${pageContext.request.contextPath}/team-section?team_id=${team.getId()}">Наши задачи</a>
+
+    <br>
 
     <a href="${pageContext.request.contextPath}/team/edit?team_id=${team.getId()}">Обновить команду</a>
 

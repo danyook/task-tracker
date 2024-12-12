@@ -13,26 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//todo поменять под с solo на team
 @WebServlet("/team-section")
 public class TeamSectionListServlet extends HttpServlet {
 
     private SectionService sectionService;
-    private UserService userService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        userService = (UserService) getServletContext().getAttribute("userService");
-
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
-        req.setAttribute("sections", sectionService.findByUserId(user.getId())); //todo сделать получение секций по айди текущей команды
-        getServletContext().getRequestDispatcher("/WEB-INF/views/section/list.jsp").forward(req, resp);
+        String teamIdParam = req.getParameter("team_id");
+        if (teamIdParam == null || teamIdParam.isEmpty()) {
+            System.out.println("sldjkflasjdf;a");
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            int teamId = Integer.parseInt(teamIdParam);
+            req.setAttribute("sections", sectionService.findByTeamId(teamId));
+            req.setAttribute("team_id", teamId);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/section/team/list.jsp").forward(req, resp);
+        }
 
     }
 
