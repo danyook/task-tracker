@@ -29,7 +29,7 @@ FROM tomcat:9.0.65-jdk17-corretto
 
 WORKDIR /usr/local/tomcat
 
-COPY --from=build /home/app/target/itis-11-304-sem1-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build /home/app/target/TaskTracker.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
