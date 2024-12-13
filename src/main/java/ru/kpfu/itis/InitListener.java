@@ -49,7 +49,7 @@ public class InitListener implements ServletContextListener {
 
         } catch (DbException e) {
 //            throw new RuntimeException("Initialization failed", e);
-            System.out.println("itir error");
+
         }
 
     }
