@@ -4,9 +4,6 @@ import lombok.Data;
 import ru.kpfu.itis.entities.enums.SectionRole;
 import ru.kpfu.itis.entities.enums.SectionType;
 
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.List;
 
 
@@ -17,10 +14,8 @@ public class Section {
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
     private SectionType type;
 
-    @Enumerated(EnumType.STRING)
     private SectionRole role;
 
 
