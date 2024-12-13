@@ -48,7 +48,8 @@ public class InitListener implements ServletContextListener {
             sce.getServletContext().setAttribute("userService", userService);
 
         } catch (DbException e) {
-            throw new RuntimeException("Initialization failed", e);
+//            throw new RuntimeException("Initialization failed", e);
+            System.out.println("itir error");
         }
 
     }
