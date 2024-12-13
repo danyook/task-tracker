@@ -1,4 +1,4 @@
-FROM maven:3.9.9-eclipse-temurin-17-jammy as build
+FROM maven:3.9.9-openjdk-17-slim as build
 
 COPY src /home/app/src
 COPY pom.xml home/app
