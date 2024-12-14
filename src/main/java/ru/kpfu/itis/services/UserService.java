@@ -2,7 +2,9 @@ package ru.kpfu.itis.services;
 
 import ru.kpfu.itis.dao.UserDAO;
 import ru.kpfu.itis.entities.User;
+import ru.kpfu.itis.exception.NotCorrectPasswordException;
 import ru.kpfu.itis.exception.NotFoundUserException;
+import ru.kpfu.itis.util.PassEncrypt;
 
 import java.util.Collections;
 import java.util.List;
@@ -61,6 +63,15 @@ public class UserService {
         String truePass = user.getPassword();
 
         return (pass.equals(truePass));
+    }
+
+    public void updatePassword(int id, String newPass, String oldPass) {
+        String currPass = userDAO.findById(id).getPassword();
+        if (PassEncrypt.encrypt(oldPass).equals(currPass)) {
+            userDAO.updatePassword(id, newPass);
+        } else {
+            throw new NotCorrectPasswordException("Current password does not match");
+        }
     }
 
 }

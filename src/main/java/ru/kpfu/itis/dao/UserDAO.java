@@ -5,6 +5,7 @@ import ru.kpfu.itis.dao.mappers.UserMapper;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
+import ru.kpfu.itis.util.PassEncrypt;
 
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class UserDAO {
     }
 
     public void update(int id, User updatedUser) {
-        jdbcTemplate.update("UPDATE Person SET username=?, name=?, surname=?, password=? WHERE id=?",
-                updatedUser.getSurname(), updatedUser.getName(), updatedUser.getSurname(), updatedUser.getPassword(), id);
+        jdbcTemplate.update("UPDATE Person SET username=?, name=?, surname=? WHERE id=?",
+                updatedUser.getSurname(), updatedUser.getName(), updatedUser.getSurname(), id);
     }
 
     public void delete(int id) {
@@ -58,6 +59,11 @@ public class UserDAO {
     public User findByUsername(String username) {
         return jdbcTemplate.query("SELECT * FROM Person WHERE username=?", new UserMapper(), username)
                 .stream().findAny().orElse(null);
+    }
+
+    public void updatePassword(int id, String pass) {
+        jdbcTemplate.update("UPDATE Person SET password=? WHERE id=?",
+                PassEncrypt.encrypt(pass), id);
     }
 
 }
