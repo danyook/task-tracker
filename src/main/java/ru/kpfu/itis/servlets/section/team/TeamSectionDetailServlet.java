@@ -47,7 +47,7 @@ public class TeamSectionDetailServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
 
-        Section section = sectionService.findOne(sectionId);
+        Section section = sectionService.findById(sectionId);
         if (section != null) {
             req.setAttribute("section", section);
             req.setAttribute("tasks", taskService.findNotDoneTasksBySectionId(sectionId));

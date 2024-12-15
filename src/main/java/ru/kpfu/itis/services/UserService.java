@@ -27,7 +27,7 @@ public class UserService {
         return userDAO.findAll();
     }
 
-    public User findOne(int id) {
+    public User findById(int id) {
         return userDAO.findById(id);
     }
 

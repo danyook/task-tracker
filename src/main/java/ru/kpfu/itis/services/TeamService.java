@@ -26,7 +26,7 @@ public class TeamService {
         return teamDAO.findAll();
     }
 
-    public Team findOne(int id) {
+    public Team findById(int id) {
         return teamDAO.findById(id);
     }
 

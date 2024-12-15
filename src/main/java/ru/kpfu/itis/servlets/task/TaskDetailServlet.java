@@ -1,11 +1,9 @@
 package ru.kpfu.itis.servlets.task;
 
-import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
-import ru.kpfu.itis.services.UserService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
-import java.util.logging.Handler;
 
 @WebServlet("/task/*")
 public class TaskDetailServlet extends HttpServlet {
@@ -50,7 +47,7 @@ public class TaskDetailServlet extends HttpServlet {
         Integer taskId = extractTaskId(req, resp);
         if (taskId == null) return;
 
-        Task task = taskService.findOne(taskId);
+        Task task = taskService.findById(taskId);
         if (task != null) {
             req.setAttribute("task", task);
             getServletContext().getRequestDispatcher("/WEB-INF/views/task/detail.jsp").forward(req, resp);
@@ -87,7 +84,7 @@ public class TaskDetailServlet extends HttpServlet {
         int sectionId = Integer.parseInt(req.getParameter("section_id"));
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        Task doneTask = taskService.findOne(taskId);
+        Task doneTask = taskService.findById(taskId);
 
         taskService.setDone(doneTask, new Date(), user.getId());
         resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);

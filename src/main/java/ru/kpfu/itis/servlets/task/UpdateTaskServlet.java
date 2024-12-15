@@ -2,10 +2,6 @@ package ru.kpfu.itis.servlets.task;
 
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Task;
-import ru.kpfu.itis.entities.User;
-import ru.kpfu.itis.entities.enums.SectionRole;
-import ru.kpfu.itis.entities.enums.SectionType;
-import ru.kpfu.itis.entities.enums.TaskStatus;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 import ru.kpfu.itis.services.UserService;
@@ -17,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet("/task/edit")
 public class UpdateTaskServlet extends HttpServlet {
@@ -52,7 +47,7 @@ public class UpdateTaskServlet extends HttpServlet {
         String description = req.getParameter("description");
 
 
-        Section section = sectionService.findOne(sectionId);
+        Section section = sectionService.findById(sectionId);
 
         Task task = new Task();
 

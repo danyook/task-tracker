@@ -47,7 +47,7 @@ public class CreateTaskServlet extends HttpServlet {
         Timestamp timestamp = new Timestamp(utilDate.getTime());
         int section_id = Integer.parseInt(req.getParameter("section_id"));
 
-        Section section = sectionService.findOne(section_id);
+        Section section = sectionService.findById(section_id);
 
         Task task = new Task();
 

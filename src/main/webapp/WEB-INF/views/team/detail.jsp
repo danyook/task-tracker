@@ -4,32 +4,31 @@
 
 <t:mainLayout title="Team detail">
 
-    <h1>Команда: ${team.getName()}</h1>
+    <h1>Команда: ${team.name}</h1>
 
     <h2>Участники:</h2>
     <ul>
         <c:forEach var="user" items="${users}">
-            <li>${user.getUsername()}</li>
+            <li>${user.username}</li>
             <br/>
         </c:forEach>
     </ul>
 
-    <a href="${pageContext.request.contextPath}/team-section?team_id=${team.getId()}">Наши задачи</a>
+    <a href="${pageContext.request.contextPath}/team-section?team_id=${team.id}">Наши задачи</a>
+    <br/>
 
-    <br>
-
-    <a href="${pageContext.request.contextPath}/team/edit?team_id=${team.getId()}">Обновить команду</a>
-
-    <br>
-
-    <a href="${pageContext.request.contextPath}/team/add-user?team_id=${team.id}">Добавить участника</a>
-
-    <form action="<c:url value='/team/${team.getId()}'/>" method="POST">
-        <input type="hidden" name="_method" value="DELETE"/>
-        <input type="submit" value="Удалить команду!"/>
-    </form>
+    <c:if test="${currentUser.id == team.owner.id}">
+        <a href="${pageContext.request.contextPath}/team/edit?team_id=${team.id}">Обновить команду</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/team/add-user?team_id=${team.id}">Добавить участника</a>
+        <br/>
+        <form action="<c:url value='/team/${team.id}'/>" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <input type="submit" value="Удалить команду!"/>
+        </form>
+        <br/>
+    </c:if>
 
     <a href="${pageContext.request.contextPath}/team">Назад к списку команд</a>
-
 
 </t:mainLayout>

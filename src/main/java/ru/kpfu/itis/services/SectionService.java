@@ -31,7 +31,7 @@ public class SectionService {
         return sectionDAO.findByTeamId(teamId);
     }
 
-    public Section findOne(int id) {
+    public Section findById(int id) {
         return sectionDAO.findById(id);
     }
 

@@ -1,10 +1,7 @@
 package ru.kpfu.itis.servlets.team;
 
 
-import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Team;
-import ru.kpfu.itis.entities.enums.SectionRole;
-import ru.kpfu.itis.entities.enums.SectionType;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
@@ -18,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/team/edit")
 public class UpdateTeamServlet extends HttpServlet {
@@ -37,27 +35,40 @@ public class UpdateTeamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String teamIdParam = req.getParameter("team_id");
-        req.setAttribute("team_id", teamIdParam);
+        int teamId = Integer.parseInt(teamIdParam);
+        Team team = teamService.findById(teamId);
+        req.setAttribute("team", team);
+        List<User> teamMembers = userService.findByTeamId(teamId);
+        req.setAttribute("teamMembers", teamMembers);
         getServletContext().getRequestDispatcher("/WEB-INF/views/team/edit.jsp").forward(req, resp);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("team_id"));
+
+        int teamId = Integer.parseInt(req.getParameter("team_id"));
+        Team team = teamService.findById(teamId);
+
+        // Assuming user authentication info is stored in the session
+        User user = (User) req.getSession().getAttribute("user");
+
+        // Check if the current user is the owner of the team
+        if (!team.getOwner().equals(user)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN, "You are not authorized to update this team.");
+            return;
+        }
 
         String name = req.getParameter("name");
-
-        User user = userService.findOne(1);//todo сделать назначение пользователя, которого выбрал владелец
-
-        Team team = new Team();
+        int newOwnerId = Integer.parseInt(req.getParameter("owner"));
+        User newOwner = userService.findById(newOwnerId);
 
         team.setName(name);
-        team.setOwner(user);
+        team.setOwner(newOwner);
 
-        teamService.update(id, team);
+        teamService.update(teamId, team);
 
-        resp.sendRedirect(req.getContextPath() + "/team/" + id);
+        resp.sendRedirect(req.getContextPath() + "/team/" + teamId);
     }
-
 }
+

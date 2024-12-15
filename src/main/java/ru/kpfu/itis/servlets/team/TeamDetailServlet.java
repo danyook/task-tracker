@@ -1,8 +1,8 @@
 package ru.kpfu.itis.servlets.team;
 
 
-import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Team;
+import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 import ru.kpfu.itis.services.TeamService;
@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/team/*")
@@ -43,11 +44,14 @@ public class TeamDetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
         Integer teamId = extractSectionId(req, resp);
         if (teamId == null) return;
 
-        Team team = teamService.findOne(teamId);
+        Team team = teamService.findById(teamId);
         if (team != null) {
+            req.setAttribute("currentUser", user);
             req.setAttribute("team", team);
             req.setAttribute("users", userService.findByTeamId(teamId));
 

@@ -2,16 +2,24 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:mainLayout title="New">
+<t:mainLayout title="Edit Team">
 
     <form action="<c:url value='/team/edit'/>" method="POST">
-        <input type="hidden" name="team_id" value="${team_id}"/>
+        <input type="hidden" name="team_id" value="${team.getId()}"/>
 
-        <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" placeholder="Name" value="${team.getName()}"/>
         <br/>
-        <input name="owner" type="text" placeholder="new owner" <c:out value="${owner}"/> > <%-- Сделать выпадающий список для выбора нового владельца --%>
+
+        <label for="owner">New Owner:</label>
+        <select id="owner" name="owner">
+            <c:forEach var="member" items="${teamMembers}">
+                <option value="${member.id}" ${member.id == team.owner.id ? 'selected' : ''}>${member.username}</option>
+            </c:forEach>
+        </select>
         <br/>
-        <input type="submit" value="Обновить команду!"/>
+
+        <input type="submit" value="Update Team"/>
     </form>
 
 </t:mainLayout>

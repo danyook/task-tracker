@@ -25,7 +25,7 @@ public class TaskService {
         return taskDAO.findAll();
     }
 
-    public Task findOne(int id) {
+    public Task findById(int id) {
         return taskDAO.findById(id);
     }
 

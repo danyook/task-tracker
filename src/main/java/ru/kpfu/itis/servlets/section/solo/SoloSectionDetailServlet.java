@@ -41,7 +41,7 @@ public class SoloSectionDetailServlet extends HttpServlet {
         Integer sectionId = extractSectionId(req, resp);
         if (sectionId == null) return;
 
-        Section section = sectionService.findOne(sectionId);
+        Section section = sectionService.findById(sectionId);
         if (section != null) {
             req.setAttribute("section", section);
             req.setAttribute("tasks", taskService.findNotDoneTasksBySectionId(sectionId));
