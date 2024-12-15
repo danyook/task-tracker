@@ -42,6 +42,7 @@ public class ProfileUpdateServlet extends HttpServlet {
 
         User updatedUser = new User();
 
+        updatedUser.setId(user.getId());
         updatedUser.setUsername(username);
         updatedUser.setName(name);
         updatedUser.setSurname(surname);

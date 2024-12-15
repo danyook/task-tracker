@@ -48,8 +48,9 @@ public class UserDAO {
     }
 
     public void update(int id, User updatedUser) {
+        System.out.println(updatedUser);
         jdbcTemplate.update("UPDATE Person SET username=?, name=?, surname=? WHERE id=?",
-                updatedUser.getSurname(), updatedUser.getName(), updatedUser.getSurname(), id);
+                updatedUser.getUsername(), updatedUser.getName(), updatedUser.getSurname(), id);
     }
 
     public void delete(int id) {
