@@ -4,24 +4,24 @@
 
 <t:mainLayout title="Main page">
 
-<div class="text-info">Lists:</div>
+    <div class="text-info">Lists:</div>
 
-<ul>
-    <c:forEach var="section" items="${sections}">
-        <li>
-            <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">${section.getName()}</a>
-        </li>
-    </c:forEach>
-</ul>
+    <ul>
+        <c:forEach var="section" items="${sections}">
+            <li>
+                <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">${section.getName()}</a>
+            </li>
+        </c:forEach>
+    </ul>
 
     <a href="${pageContext.request.contextPath}/done-tasks">Архив выполненных задач</a>
 
-<br/>
-<hr/>
+    <br/>
+    <hr/>
 
-<a href="${pageContext.request.contextPath}/solo-section/new">Создать новый список</a>
+    <a href="${pageContext.request.contextPath}/solo-section/new">Создать новый список</a>
 
-<br>
+    <br>
 
 </t:mainLayout>
 

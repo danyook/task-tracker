@@ -3,6 +3,7 @@ package ru.kpfu.itis.entities;
 import lombok.Data;
 import ru.kpfu.itis.entities.enums.TaskStatus;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -16,7 +17,7 @@ public class Task {
 
     private TaskStatus taskStatus;
 
-    private Date dateOfAdd;
+    private Timestamp dateOfAdd;
 
 
     private Section section;

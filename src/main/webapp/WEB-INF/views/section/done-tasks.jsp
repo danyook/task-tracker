@@ -7,20 +7,19 @@
     <h1>Выполненные задачи:</h1>
 
     <ul>
-        <c:forEach var="doneTask" items="${tasks}">
+        <c:forEach var="doneTask" items="${doneTasks}">
             <a>${doneTask.getName()}. Дата выполнения: ${doneTask.getDateOfAdd()}</a>
+
+            <form action="<c:url value='/done-tasks'/>" method="POST">
+                <input type="hidden" name="task_id" value="${doneTask.getId()}"/>
+                <input type="submit" value="Задача не выполнена!"/>
+            </form>
             <br/>
         </c:forEach>
     </ul>
 
-    <form action="<c:url value='/done-tasks'/>" method="POST">
-        <input type="submit" value="Задача не выполнена!"/>
-    </form>
-
     <br/>
 
-
     <a href="${pageContext.request.contextPath}/solo-section">Назад ко всем спискам</a>
-
 
 </t:mainLayout>

@@ -1,5 +1,7 @@
 package ru.kpfu.itis.servlets.task;
 
+import ru.kpfu.itis.entities.Section;
+import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
@@ -34,6 +36,10 @@ public class DoneTaskListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);//todo сделать возвращение задачи снова в невыполненные
+        int taskId = Integer.parseInt(req.getParameter("task_id"));
+
+        taskService.setNotDone(taskId);
+
+        resp.sendRedirect(req.getContextPath() + "/done-tasks");
     }
 }

@@ -2,6 +2,7 @@ package ru.kpfu.itis.servlets.task;
 
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Task;
+import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 import ru.kpfu.itis.services.UserService;
@@ -12,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Handler;
 
 @WebServlet("/task/*")
@@ -62,8 +65,8 @@ public class TaskDetailServlet extends HttpServlet {
         String method = req.getParameter("_method");
         if ("DELETE".equalsIgnoreCase(method)) {
             doDelete(req, resp); // Перенаправляем к методу `doDelete`
-        } else {
-            // Другие POST запросы можем обрабатывать здесь или отправить ошибку
+        } else if ("PATCH".equals(method)) {
+            doPatch(req, resp);
         }
     }
 
@@ -75,6 +78,18 @@ public class TaskDetailServlet extends HttpServlet {
         if (taskId == null) return;
 
         taskService.delete(taskId);
+        resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
+    }
+
+
+    protected void doPatch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int taskId = extractTaskId(req, resp);
+        int sectionId = Integer.parseInt(req.getParameter("section_id"));
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        Task doneTask = taskService.findOne(taskId);
+
+        taskService.setDone(doneTask, new Date(), user.getId());
         resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
     }
 }

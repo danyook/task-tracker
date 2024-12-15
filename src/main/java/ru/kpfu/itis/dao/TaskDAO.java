@@ -1,12 +1,14 @@
 package ru.kpfu.itis.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import ru.kpfu.itis.dao.mappers.DoneTaskMapper;
 import ru.kpfu.itis.dao.mappers.TaskMapper;
 import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.enums.TaskStatus;
 import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
+import java.util.Date;
 import java.util.List;
 
 public class TaskDAO {
@@ -39,14 +41,19 @@ public class TaskDAO {
     }
 
     public List<Task> findDoneTasks(int personId) {
-        return jdbcTemplate.query("SELECT * FROM done_tasks_archive WHERE person_id=?", new TaskMapper(), personId);
+        return jdbcTemplate.query("SELECT * FROM done_tasks_archive WHERE person_id=?", new DoneTaskMapper(), personId);
     }
 
-    public void save(Task task) {
+    public void saveToTask(Task task) {
         jdbcTemplate.update("INSERT INTO Task(name, description, status, date_of_add, section_id) VALUES(?, ?, ?, ?, ?)",
                 task.getName(), task.getDescription(), task.getTaskStatus().name(),
                 task.getDateOfAdd(), task.getSection().getId());
 
+    }
+
+    public void saveToArchive(Task doneTask, Date date, int userId) {
+        jdbcTemplate.update("INSERT INTO done_tasks_archive(id, name, date_of_done, person_id) VALUES(?, ?, ?, ?)",
+                doneTask.getId(), doneTask.getName(), date, userId);
     }
 
     public void update(int id, Task updatedTask) {
@@ -58,6 +65,7 @@ public class TaskDAO {
     public void setDone(int id) {
         jdbcTemplate.update("UPDATE Task SET status=? WHERE id=?",
                 TaskStatus.DONE.name(), id);
+
     }
 
     public void setNotDone(int id) {
@@ -67,5 +75,9 @@ public class TaskDAO {
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Task WHERE id=?", id);
+    }
+
+    public void deleteFromArchive(int id) {
+        jdbcTemplate.update("DELETE FROM done_tasks_archive WHERE id=?", id);
     }
 }

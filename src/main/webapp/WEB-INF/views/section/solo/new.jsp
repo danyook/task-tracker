@@ -4,14 +4,16 @@
 
 <t:mainLayout title="New">
 
-<form action="<c:url value="/solo-section/new"/>" method="POST">
-    <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
-    <br/>
-    <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >
+    <form action="<c:url value="/solo-section/new"/>" method="POST">
+        <input name="name" type="text" placeholder="Name"
+            <c:out value="${name}"/> >
+        <br/>
+        <input name="type" type="text" placeholder="Type (TASK/NOTE)"
+            <c:out value="${type}"/> >
 
-    <input type="submit" value="Создать!"/>
+        <input type="submit" value="Создать!"/>
 
-</form>
+    </form>
 
 </t:mainLayout>
 

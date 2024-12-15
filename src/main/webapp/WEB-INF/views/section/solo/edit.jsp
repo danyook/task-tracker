@@ -6,9 +6,11 @@
 
     <form action="<c:url value='/solo-section/edit'/>" method="POST">
         <input type="hidden" name="section_id" value="${section_id}"/>
-        <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
+        <input name="name" type="text" placeholder="Name"
+            <c:out value="${name}"/> >
         <br/>
-        <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >
+        <input name="type" type="text" placeholder="Type (TASK/NOTE)"
+            <c:out value="${type}"/> >
         <br/>
         <input type="submit" value="Изменить список!"/>
     </form>

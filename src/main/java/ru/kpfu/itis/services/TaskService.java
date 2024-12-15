@@ -3,6 +3,7 @@ package ru.kpfu.itis.services;
 import ru.kpfu.itis.dao.TaskDAO;
 import ru.kpfu.itis.entities.Task;
 
+import java.util.Date;
 import java.util.List;
 
 public class TaskService {
@@ -37,7 +38,7 @@ public class TaskService {
     }
 
     public void save(Task task) {
-        taskDAO.save(task);
+        taskDAO.saveToTask(task);
     }
 
     public void update(int id, Task updatedTask) {
@@ -48,11 +49,13 @@ public class TaskService {
         taskDAO.delete(id);
     }
 
-    public void setDone(int id) {
-        taskDAO.setDone(id);
+    public void setDone(Task doneTask, Date date, int userId) {
+        taskDAO.setDone(doneTask.getId());
+        taskDAO.saveToArchive(doneTask, date, userId);
     }
 
     public void setNotDone(int id) {
         taskDAO.setNotDone(id);
+        taskDAO.deleteFromArchive(id);
     }
 }

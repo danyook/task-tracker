@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @WebServlet("/task/new")
@@ -42,7 +43,8 @@ public class CreateTaskServlet extends HttpServlet {
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         TaskStatus taskStatus = TaskStatus.NOTDONE;
-        Date date = new Date();
+        Date utilDate = new Date();
+        Timestamp timestamp = new Timestamp(utilDate.getTime());
         int section_id = Integer.parseInt(req.getParameter("section_id"));
 
         Section section = sectionService.findOne(section_id);
@@ -52,7 +54,7 @@ public class CreateTaskServlet extends HttpServlet {
         task.setName(name);
         task.setDescription(description);
         task.setTaskStatus(taskStatus);
-        task.setDateOfAdd(date);
+        task.setDateOfAdd(timestamp);
         task.setSection(section);
 
         taskService.save(task);

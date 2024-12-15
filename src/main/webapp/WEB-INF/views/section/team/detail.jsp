@@ -19,7 +19,8 @@
 
     <a href="${pageContext.request.contextPath}/team-section/edit?section_id=${section.getId()}">Обновить список</a>
 
-    <form action="<c:url value='/team-section/${section.getId()}?team_id=${team_id}'/>" method="POST"><%--todo добавить team_id--%>
+    <form action="<c:url value='/team-section/${section.getId()}?team_id=${team_id}'/>"
+          method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="submit" value="Удалить список!"/>
     </form>
