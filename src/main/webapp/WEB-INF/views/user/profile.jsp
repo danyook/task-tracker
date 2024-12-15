@@ -17,6 +17,8 @@
             <a href="${pageContext.request.contextPath}/team">Мои команды</a>
             <br>
 
+            <a href="${pageContext.request.contextPath}/profile/edit">Редактировать профиль</a>
+
             <!-- Кнопка выхода -->
             <form action="${pageContext.request.contextPath}/logout" method="post">
                 <button type="submit">Выйти</button>
