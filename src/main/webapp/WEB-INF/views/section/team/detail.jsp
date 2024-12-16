@@ -10,6 +10,12 @@
     <ul>
         <c:forEach var="task" items="${tasks}">
             <a href="${pageContext.request.contextPath}/task/${task.getId()}?section_id=${section.getId()}">${task.getName()}</a>
+            <c:if test="${section.type == 'TASK'}">
+                <form action="<c:url value='/task/${task.id}?section_id=${section.id}'/>" method="POST">
+                    <input type="hidden" name="_method" value="PATCH"/>
+                    <input type="submit" value="Выполнено!"/>
+                </form>
+            </c:if>
             <br/>
         </c:forEach>
     </ul>

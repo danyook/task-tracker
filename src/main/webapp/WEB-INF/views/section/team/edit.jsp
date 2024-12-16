@@ -8,7 +8,11 @@
         <input type="hidden" name="section_id" value="${section_id}"/>
         <input name="name" type="text" placeholder="Name" <c:out value="${name}"/> >
         <br/>
-        <input name="type" type="text" placeholder="Type (TASK/NOTE)" <c:out value="${type}"/> >
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="NOTE">Заметка</option>
+            <option value="TASK">Задача</option>
+        </select>
         <br/>
         <input type="submit" value="Изменить список!"/>
     </form>

@@ -37,7 +37,7 @@ public class CreateSoloSectionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         SectionRole sectionRole = SectionRole.SOLO;
-        SectionType sectionType = SectionType.valueOf(req.getParameter("type"));
+        SectionType sectionType = SectionType.valueOf(req.getParameter("type").toUpperCase());
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");

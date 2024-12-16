@@ -43,7 +43,7 @@ public class CreateTeamSectionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         SectionRole sectionRole = SectionRole.TEAM;
-        SectionType sectionType = SectionType.valueOf(req.getParameter("type"));
+        SectionType sectionType = SectionType.valueOf(req.getParameter("type").toUpperCase());
 
         String teamIdParam = req.getParameter("team_id");
         if (teamIdParam == null) {

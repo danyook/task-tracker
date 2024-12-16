@@ -2,18 +2,21 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:mainLayout title="New">
+<t:mainLayout title="New Section">
 
-    <form action="<c:url value="/solo-section/new"/>" method="POST">
-        <input name="name" type="text" placeholder="Name"
-            <c:out value="${name}"/> >
+    <form action="<c:url value='/solo-section/new'/>" method="POST">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" placeholder="Name" value="${name}" />
         <br/>
-        <input name="type" type="text" placeholder="Type (TASK/NOTE)"
-            <c:out value="${type}"/> >
+
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="NOTE">Заметка</option>
+            <option value="TASK">Задача</option>
+        </select>
+        <br/>
 
         <input type="submit" value="Создать!"/>
-
     </form>
 
 </t:mainLayout>
-
