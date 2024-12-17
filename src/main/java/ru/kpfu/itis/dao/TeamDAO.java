@@ -45,21 +45,7 @@ public class TeamDAO {
     }
 
     public int save(Team team) {
-//        jdbcTemplate.update("INSERT INTO Team(name, owner_id) VALUES(?,?)",
-//                team.getName(), team.getOwner().getId());
-//        return team;
-
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-                .withTableName("Team")
-                .usingGeneratedKeyColumns("id"); // Укажите имя столбца сгенерированного ключа
-
-        // Подготовка параметров
-        MapSqlParameterSource parameters = new MapSqlParameterSource();
-        parameters.addValue("name", team.getName());
-        parameters.addValue("owner_id", team.getOwner().getId());
-
-        // Выполнение вставки и получение сгенерированного ключа
-        return jdbcInsert.executeAndReturnKey(parameters).intValue();
+        return jdbcTemplate.queryForObject("INSERT INTO Team(name, owner_id) VALUES(?, ?) RETURNING id",new Object[]{team.getName(), team.getOwner().getId()}, Integer.class);
     }
 
     public void update(int id, Team updatedTeam) {
