@@ -2,31 +2,20 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:mainLayout title="Change password">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/profile.css">
 
-    <c:if test="${not empty error}">
-        <p style="color:red;">${error}</p>
-    </c:if>
+<div class="edit-profile-content">
+    <h2>Сменить пароль</h2>
+    <form method="POST" action="<c:url value='/password'/>" class="edit-profile-form">
+        <label for="oldPass">Старый пароль:</label>
+        <input type="password" name="oldPass" id="oldPass" placeholder="Старый пароль"/>
 
-    <form method="POST" action="<c:url value='/password'/>">
+        <label for="newPassOne">Новый пароль:</label>
+        <input type="password" name="newPassOne" id="newPassOne" placeholder="Новый пароль"/>
 
-        Old password:
-        <input type="text" name="oldPass">
-
-        <br>
-
-        New pass:
-        <input type="password" name="newPassOne">
-
-        <br>
-
-        New pass again:
-        <input type="password" name="newPassTwo">
-
-        <br>
+        <label for="newPassTwo">Повторите новый пароль:</label>
+        <input type="password" name="newPassTwo" id="newPassTwo" placeholder="Повторите новый пароль"/>
 
         <input type="submit" value="Сменить пароль!"/>
-        
     </form>
-
-</t:mainLayout>
+</div>

@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e; /* Темный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #1c2c54; /* Темный и синий фон для контейнера */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Увеличена тень */
+    width: 350px;
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #ffffff; /* Белый цвет текста */
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #bbbbbb; /* Светло-серый цвет текста */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #3c4a6b; /* Темный цвет для ввода */
+    color: #ffffff; /* Белый цвет текста */
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #357ab8;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.social-login {
+    margin-top: 20px;
+}
+
+.google-login,
+.apple-login {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.google-login {
+    background-color: #db4437;
+    color: #ffffff;
+}
+
+.google-login:hover {
+    background-color: #c23321;
+}
+
+.apple-login {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.apple-login:hover {
+    background-color: #333333;
+}
+
+.error-message {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.not-registered {
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.register-link {
+    display: block;
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Добавляем класс для заголовка */
+.registration-heading {
+    color: #b3c7f9; /* Светлый цвет для заголовка */
+    font-size: 24px;
+    margin-bottom: 20px;
+}

@@ -2,19 +2,22 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:mainLayout title="New">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/profile.css">
 
-    <form action="<c:url value='/profile/edit'/>" method="POST">
+<div class="edit-profile-content">
+    <h2>Редактировать профиль</h2>
+    <form action="<c:url value='/profile/edit'/>" method="POST" class="edit-profile-form">
         <input type="hidden" name="team_id" value="${team_id}"/>
 
-        <input name="username" type="text" placeholder="username" <c:out value="${username}"/> >
-        <br/>
-        <input name="name" type="text" placeholder="name" <c:out value="${name}"/> >
-        <br/>
-        <input name="surname" type="text" placeholder="surname" <c:out value="${surname}"/> >
-        <br/>
+        <label for="username">Логин:</label>
+        <input name="username" id="username" type="text" placeholder="Логин" value="${sessionScope.user.username}"/>
+
+        <label for="name">Имя:</label>
+        <input name="name" id="name" type="text" placeholder="Имя" value="${sessionScope.user.name}"/>
+
+        <label for="surname">Фамилия:</label>
+        <input name="surname" id="surname" type="text" placeholder="Фамилия" value="${sessionScope.user.surname}"/>
 
         <input type="submit" value="Обновить профиль!"/>
     </form>
-
-</t:mainLayout>
+</div>

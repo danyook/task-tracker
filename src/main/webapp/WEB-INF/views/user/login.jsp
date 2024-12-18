@@ -4,27 +4,29 @@
 
 <t:mainLayout title="Profile">
 
-    <c:if test="${not empty error}">
-        <p style="color:red;">${error}</p>
-    </c:if>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css">
 
-    <form method="POST" action="<c:url value='/login'/>">
+    <div class="login-container">
 
-        Login:
-        <input type="text" name="username">
 
-        <br>
 
-        Password:
-        <input type="password" name="password">
+        <form method="POST" action="<c:url value='/login'/>" class="login-form">
+            <h2>Войти</h2>
+            <label for="username">Логин:</label>
+            <input type="text" name="username" id="username" required>
 
-        <br>
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password" required>
 
-        <input type="submit" value="Войти!"/>
+            <c:if test="${not empty error}">
+                <div class="error-message">${error}</div>
+            </c:if>
 
-        <br>
+            <input type="submit" value="Войти" class="login-button"/>
 
-        <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
-    </form>
+            <div class="not-registered">Вы еще не зарегистрированы?</div>
+            <a href="${pageContext.request.contextPath}/registration" class="register-link">Зарегистрироваться</a>
+        </form>
+    </div>
 
 </t:mainLayout>

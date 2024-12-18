@@ -16,7 +16,6 @@
     <ling rel="stylesheet" href="<c:url value="/style/main.css"/>">
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/profile">Мой профиль</a>
     <br>
     <jsp:doBody/>
 <body/>

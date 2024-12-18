@@ -31,7 +31,7 @@ public class AuthFilter implements Filter {
 
         String uri = httpRequest.getRequestURI();
 
-        if (user == null && !uri.contains("login") && !uri.contains("registration")) {
+        if (user == null && !uri.contains("login") && !uri.contains("registration") && !uri.contains("style")) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         } else {
             chain.doFilter(request, response);

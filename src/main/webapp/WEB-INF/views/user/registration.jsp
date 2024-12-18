@@ -4,26 +4,36 @@
 
 <t:mainLayout title="Registration">
 
-    <h1>Регистрация</h1>
-    <!-- Показываем сообщение об ошибке, если есть -->
-    <c:if test="${not empty error}">
-        <p style="color:red;">${error}</p>
-    </c:if>
-    <form action="<c:url value='/registration'/>" method="post">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/registration.css">
 
-        <label for="name">Имя:</label><br>
-        <input type="text" name="name" id="name" required /><br><br>
+    <div class="login-container">
 
-        <label for="surname">Фамилия:</label><br>
-        <input type="text" name="surname" id="surname" required /><br><br>
 
-        <label for="username">Логин:</label><br>
-        <input type="text" name="username" id="username" required /><br><br>
 
-        <label for="password">Пароль:</label><br>
-        <input type="password" name="password" id="password" required /><br><br>
-        <button type="submit">Зарегистрироваться!</button>
-    </form>
+        <form action="<c:url value='/registration'/>" method="post" class="login-form">
+            <h2>Регистрация</h2>
+            <label for="name">Имя:</label>
+            <input type="text" name="name" id="name" required/>
+
+            <label for="surname">Фамилия:</label>
+            <input type="text" name="surname" id="surname" required/>
+
+            <label for="username">Логин:</label>
+            <input type="text" name="username" id="username" required/>
+
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password" required/>
+
+            <c:if test="${not empty error}">
+                <div class="error-message">${error}</div>
+            </c:if>
+
+            <button type="submit" class="login-button">Зарегистрироваться!</button>
+
+            <div class="not-registered">Уже есть аккаунт?</div>
+            <a href="${pageContext.request.contextPath}/login" class="register-link">Войти!</a>
+        </form>
+    </div>
 
 </t:mainLayout>
 

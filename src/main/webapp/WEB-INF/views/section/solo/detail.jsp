@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:mainLayout title="List detail">
+    <%@include file="/WEB-INF/views/parts/navbar.jsp" %>
 
     <h1>Секция: ${section.name}</h1>
 
@@ -33,4 +34,6 @@
 
     <a href="${pageContext.request.contextPath}/solo-section">Назад ко всем спискам</a>
 
+
+    <%@include file="/WEB-INF/views/parts/footer.jsp" %>
 </t:mainLayout>

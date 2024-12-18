@@ -35,8 +35,9 @@ public class RegistrationServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = PassEncrypt.encrypt(req.getParameter("password"));
 
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            req.setAttribute("error", "Пожалуйста, введите имя пользователя и пароль.");
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()
+                || name == null || name.isEmpty() || surname == null || surname.isEmpty()) {
+            req.setAttribute("error", "Пожалуйста, заполните все поля");
             req.getRequestDispatcher("/WEB-INF/views/user/registration.jsp").forward(req, resp);
             return;
         }

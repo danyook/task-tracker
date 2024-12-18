@@ -1,0 +1,1 @@
+<a href="${pageContext.request.contextPath}/profile">Мой профиль</a>
