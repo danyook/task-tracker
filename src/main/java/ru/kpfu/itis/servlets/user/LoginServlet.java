@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = PassEncrypt.encrypt(req.getParameter("password"));
-
+        System.out.println(password);
         try {
             if (userService.checkPass(username, password)) {
 
@@ -43,11 +43,13 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/profile");
 
             } else {
-                resp.sendRedirect(req.getContextPath() + "/login");
+                req.setAttribute("error", "Пароль не совпадает");
+                req.getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(req, resp);
             }
         } catch (NotFoundUserException e) {
             req.setAttribute("error", "Такого username не существует.");
-            resp.sendRedirect(req.getContextPath() + "/login");
+            req.getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(req, resp);
+
         }
 
     }

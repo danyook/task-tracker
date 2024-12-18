@@ -4,6 +4,7 @@ import ru.kpfu.itis.dao.UserDAO;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.exception.NotCorrectPasswordException;
 import ru.kpfu.itis.exception.NotFoundUserException;
+import ru.kpfu.itis.exception.OldPasswordDoesNotMatchException;
 import ru.kpfu.itis.util.PassEncrypt;
 
 import java.util.Collections;
@@ -65,13 +66,42 @@ public class UserService {
         return (pass.equals(truePass));
     }
 
-    public void updatePassword(int id, String newPass, String oldPass) {
-        String currPass = userDAO.findById(id).getPassword();
-        if (PassEncrypt.encrypt(oldPass).equals(currPass)) {
-            userDAO.updatePassword(id, newPass);
-        } else {
-            throw new NotCorrectPasswordException("Current password does not match");
+//    public boolean checkingPassForChange(int userId, String oldPass, String newPassOne, String newPassTwo) {
+//        User user = userDAO.findById(userId);
+//        if (user == null) {
+//            throw new NotFoundUserException("User with this id not found");
+//        }
+//
+//        if (!user.getPassword().equals(oldPass)) {
+//            throw new OldPasswordDoesNotMatchException("Старый пароль не совпадает");
+//        }
+//
+//        if (!newPassOne.equals(newPassTwo)) {
+//            throw new NotCorrectPasswordException("Новые пароли не совпадают");
+//        }
+//
+//        return true;
+//    }
+//
+//    public void changePass(int userId, String newPass) {
+//        userService.changePass(userId, newPass);
+//    }
+
+    public void updatePassword(int userId, String oldPass, String newPassOne, String newPassTwo) {
+        User user = userDAO.findById(userId);
+        if (user == null) {
+            throw new NotFoundUserException("Пользователь с таким id не найден");
         }
+
+        if (!user.getPassword().equals(oldPass)) {
+            throw new OldPasswordDoesNotMatchException("Старый пароль не совпадает");
+        }
+
+        if (!newPassOne.equals(newPassTwo)) {
+            throw new NotCorrectPasswordException("Новые пароли не совпадают");
+        }
+
+        userDAO.updatePassword(userId, newPassOne);
     }
 
 }

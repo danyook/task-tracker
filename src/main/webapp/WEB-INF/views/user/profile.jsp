@@ -18,6 +18,8 @@
             <br>
 
             <a href="${pageContext.request.contextPath}/profile/edit">Редактировать профиль</a>
+            <br>
+            <a href="${pageContext.request.contextPath}/password">Сменить пароль</a>
 
             <!-- Кнопка выхода -->
             <form action="${pageContext.request.contextPath}/logout" method="post">
