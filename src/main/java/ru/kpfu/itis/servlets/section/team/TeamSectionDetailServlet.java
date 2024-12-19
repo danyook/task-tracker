@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//todo поменять под с solo на team
 @WebServlet("/team-section/*")
 public class TeamSectionDetailServlet extends HttpServlet {
     private SectionService sectionService;
