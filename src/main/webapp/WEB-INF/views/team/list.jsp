@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teams.css">
 
-    ${urlPhoto}
     <div class="header">
         <a href="${pageContext.request.contextPath}/profile" class="profile-link">
             <img src="${urlPhoto}" alt="Avatar" class="profile-picture-small"/>
