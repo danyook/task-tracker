@@ -190,3 +190,30 @@ body {
 .form-button:hover {
     background-color: #357ab8;
 }
+
+/* Стили для выполненных задач */
+.task-info {
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    text-align: left; /* Выровнять текст по левому краю */
+    color: #ffffff;
+}
+
+.task-date {
+    color: #b0c4de; /* Более светлый цвет для даты выполнения */
+    font-style: italic;
+    font-size: 90%;
+}
+
+.task-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.task-button:hover {
+    background-color: #357ab8;
+}
