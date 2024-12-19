@@ -13,6 +13,7 @@ public class SectionDAO {
     private static SectionDAO INSTANCE;
     private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
+    private SectionMapper mapper = new SectionMapper();
 
     private SectionDAO() {
 
@@ -27,21 +28,21 @@ public class SectionDAO {
 
 
     public List<Section> findAll() {
-        return jdbcTemplate.query("SELECT * FROM Section", new SectionMapper());
+        return jdbcTemplate.query("SELECT * FROM Section", mapper);
     }
 
     public List<Section> findByUserId(int userId) {
         return jdbcTemplate.query("SELECT * FROM Section WHERE person_id=? AND role=?",
-                new SectionMapper(), userId, SectionRole.SOLO.name());
+                mapper, userId, SectionRole.SOLO.name());
     }
 
-     public List<Section> findByTeamId(int teamId) {
+    public List<Section> findByTeamId(int teamId) {
         return jdbcTemplate.query("SELECT * FROM Section WHERE team_id=? AND role=?",
-                new SectionMapper(), teamId, SectionRole.TEAM.name());
+                mapper, teamId, SectionRole.TEAM.name());
     }
 
     public Section findById(int id) {
-        return jdbcTemplate.query("SELECT * FROM Section WHERE id=?", new SectionMapper(), id).
+        return jdbcTemplate.query("SELECT * FROM Section WHERE id=?", mapper, id).
                 stream().findAny().orElse(null);
     }
 

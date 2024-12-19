@@ -15,6 +15,7 @@ public class TeamDAO {
     private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
     private UserDAO userDAO = UserDAO.getInstance();
+    private TeamMapper mapper = new TeamMapper(userDAO);
 
     private TeamDAO() {
         this.jdbcTemplate = jdbcTemplate;
@@ -29,23 +30,24 @@ public class TeamDAO {
 
 
     public List<Team> findAll() {
-        return jdbcTemplate.query("SELECT * FROM Team", new TeamMapper(userDAO));
+        return jdbcTemplate.query("SELECT * FROM Team", mapper);
     }
 
     public Team findById(int id) {
-        return jdbcTemplate.query("SELECT * FROM Team WHERE id=?", new TeamMapper(userDAO), id).
+        return jdbcTemplate.query("SELECT * FROM Team WHERE id=?", mapper, id).
                 stream().findAny().orElse(null);
     }
 
     public List<Team> findByPersonId(int personId) {
         return jdbcTemplate.query
-                ("SELECT * FROM Team JOIN person_team " +
-                        "ON Team.id = person_team.team_id " +
-                        "and person_team.person_id = ?", new TeamMapper(userDAO), personId);
+                ("""
+                        SELECT * FROM Team JOIN person_team 
+                        ON Team.id = person_team.team_id
+                        and person_team.person_id = ?""", mapper, personId);
     }
 
     public int save(Team team) {
-        return jdbcTemplate.queryForObject("INSERT INTO Team(name, owner_id) VALUES(?, ?) RETURNING id",new Object[]{team.getName(), team.getOwner().getId()}, Integer.class);
+        return jdbcTemplate.queryForObject("INSERT INTO Team(name, owner_id) VALUES(?, ?) RETURNING id", new Object[]{team.getName(), team.getOwner().getId()}, Integer.class);
     }
 
     public void update(int id, Team updatedTeam) {

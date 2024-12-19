@@ -13,6 +13,7 @@ public class UserDAO {
     private static UserDAO INSTANCE;
     private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
+    private UserMapper mapper = new UserMapper();
 
     private UserDAO() {
     }
@@ -26,11 +27,11 @@ public class UserDAO {
 
 
     public List<User> findAll() {
-        return jdbcTemplate.query("SELECT * FROM Person", new UserMapper());
+        return jdbcTemplate.query("SELECT * FROM Person", mapper);
     }
 
     public User findById(int id) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new UserMapper(), id)
+        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", mapper, id)
                 .stream().findAny().orElse(null);
     }
 
@@ -39,7 +40,7 @@ public class UserDAO {
                 ("""
                         SELECT * FROM Person JOIN person_team
                         ON Person.id = person_team.person_id 
-                        and person_team.team_id = ?""", new UserMapper(), teamId);
+                        and person_team.team_id = ?""", mapper, teamId);
     }
 
     public void save(User user) {
@@ -58,7 +59,7 @@ public class UserDAO {
     }
 
     public User findByUsername(String username) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE username=?", new UserMapper(), username)
+        return jdbcTemplate.query("SELECT * FROM Person WHERE username=?", mapper, username)
                 .stream().findAny().orElse(null);
     }
 

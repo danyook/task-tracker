@@ -15,6 +15,8 @@ public class TaskDAO {
     private static TaskDAO INSTANCE;
     private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
+    private TaskMapper taskMapper = new TaskMapper();
+    private DoneTaskMapper doneTaskMapper = new DoneTaskMapper();
 
     private TaskDAO() {
     }
@@ -28,20 +30,20 @@ public class TaskDAO {
 
 
     public List<Task> findAll() {
-        return jdbcTemplate.query("SELECT * FROM Task", new TaskMapper());
+        return jdbcTemplate.query("SELECT * FROM Task", taskMapper);
     }
 
     public Task findById(int id) {
-        return jdbcTemplate.query("SELECT * FROM Task WHERE id=?", new TaskMapper(), id).
+        return jdbcTemplate.query("SELECT * FROM Task WHERE id=?", taskMapper, id).
                 stream().findAny().orElse(null);
     }
 
     public List<Task> findNotDoneTasksBySectionId(int sectionId) {
-        return jdbcTemplate.query("SELECT * FROM Task WHERE section_id=? AND status=?", new TaskMapper(), sectionId, TaskStatus.NOTDONE.name());
+        return jdbcTemplate.query("SELECT * FROM Task WHERE section_id=? AND status=?", taskMapper, sectionId, TaskStatus.NOTDONE.name());
     }
 
     public List<Task> findDoneTasks(int personId) {
-        return jdbcTemplate.query("SELECT * FROM done_tasks_archive WHERE person_id=?", new DoneTaskMapper(), personId);
+        return jdbcTemplate.query("SELECT * FROM done_tasks_archive WHERE person_id=?", doneTaskMapper, personId);
     }
 
     public void saveToTask(Task task) {
