@@ -1,5 +1,6 @@
 package ru.kpfu.itis.services;
 
+import ru.kpfu.itis.dao.AvatarDAO;
 import ru.kpfu.itis.dao.UserDAO;
 import ru.kpfu.itis.entities.User;
 import ru.kpfu.itis.exception.NotCorrectPasswordException;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserService {
     private static UserService INSTANCE;
     private final UserDAO userDAO = UserDAO.getInstance();
+    private final AvatarDAO avatarDAO = AvatarDAO.getInstance();
 
     private UserService() {
     }
@@ -83,11 +85,22 @@ public class UserService {
         userDAO.updatePassword(userId, newPassOne);
     }
 
-    public void updateUserProfilePhoto(int userId, String photoUrl) {
-        User user = userDAO.findById(userId);
-        if (user != null) {
-            user.setProfilePicture(photoUrl);
-            userDAO.update(userId, user);
-        }
+
+    public void uploadPhoto(int userId, String url) {
+        if (avatarDAO.findUrlByUserId(userId) == null) avatarDAO.save(userId, url);
+        else avatarDAO.update(userId, url);
     }
+
+
+    public String getPhotoUrl(int userId) {
+        String url = avatarDAO.findUrlByUserId(userId);
+        if (url == null) return "/static/defaultAvatar.jpg";
+        return url;
+    }
+
+
+    public void deletePhoto(int userId) {
+        avatarDAO.delete(userId);
+    }
+
 }

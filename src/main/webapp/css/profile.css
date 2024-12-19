@@ -75,6 +75,24 @@ body {
     margin-right: auto;
 }
 
+.profile-picture-small {
+    border-radius: 50%;
+    width: 50px;  /* Уменьшенный размер для маленькой фотографии */
+    height: 50px;
+    margin-right: 10px;  /* Отступ справа */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .profile-actions .profile-button,
 .profile-actions button {
     display: block;
@@ -115,4 +133,89 @@ body {
 
 .edit-profile-form label {
     margin-top: 10px;
+}
+
+/* Дополнительные стили для смены аватара */
+.avatar-preview {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1c2c54; /* Темный фон для формы смены аватара */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Увеличена тень */
+}
+
+.avatar-form .form-group {
+    margin-bottom: 20px;
+}
+
+.avatar-form label {
+    background-color: #2e3a59;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.avatar-form input[type="file"] {
+    border: 1px solid #4a90e2;
+    background-color: #3c4a6b;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Увеличенная ширина для лучшего отображения */
+}
+
+.avatar-form input[type="file"]::-webkit-file-upload-button {
+    background-color: #4a90e2;
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.avatar-form input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #357ab8;
+}
+
+.avatar-form .form-button {
+    background-color: #4a90e2;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%; /* Увеличенная ширина для лучшего отображения */
+}
+
+.avatar-form .form-button:hover {
+    background-color: #357ab8;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%; /* Увеличенная ширина для лучшего отображения */
+    box-sizing: border-box; /* Учитывать отступы и границы */
+}
+
+.delete-button:hover {
+    background-color: #e60000;
 }

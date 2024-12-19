@@ -8,7 +8,7 @@
 
     <div class="header">
         <a href="${pageContext.request.contextPath}/profile" class="profile-link">
-            <img src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg" alt="Profile Picture" class="profile-picture-small"/>
+            <img src="${urlPhoto}" alt="Profile Picture" class="profile-picture-small"/>
             Профиль
         </a>
     </div>

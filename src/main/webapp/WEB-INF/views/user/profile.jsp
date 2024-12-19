@@ -16,7 +16,9 @@
     <div class="profile-container">
         <div class="profile-content">
             <div class="profile-info">
-                <img src="${sessionScope.user.profilePicture}" alt="Profile Picture" class="profile-picture" id="profile-picture"/>
+                <div class="avatar">
+                    <img src="${urlPhoto}" alt="Avatar" class="rounded-circle" width="200" height="200" id="profile-avatar"/>
+                </div>
                 <p><strong>Имя пользователя:</strong> ${sessionScope.user.username}</p>
                 <p><strong>Имя:</strong> ${sessionScope.user.name}</p>
                 <p><strong>Фамилия:</strong> ${sessionScope.user.surname}</p>
@@ -25,6 +27,7 @@
             <div class="profile-actions">
                 <button class="profile-button" id="edit-profile-btn">Редактировать профиль</button>
                 <button class="profile-button" id="change-password-btn">Сменить пароль</button>
+                <button class="profile-button" id="change-avatar-btn">Сменить аватар</button>
                 <form action="${pageContext.request.contextPath}/logout" method="post">
                     <button type="submit" class="profile-button">Выйти</button>
                 </form>
@@ -32,13 +35,8 @@
         </div>
 
         <div class="form-container" id="form-container" style="display: none;">
-            <!-- Здесь будет загружена форма редактирования профиля или смены пароля -->
+            <!-- Здесь будет загружена форма редактирования профиля, смены пароля или смены аватара -->
         </div>
-
-        <form action="${pageContext.request.contextPath}/profile/upload-photo" method="post" enctype="multipart/form-data" id="upload-photo-form" style="display: none;">
-            <input type="file" name="image" id="upload-photo-input" accept="image/*"/>
-            <input type="submit" value="Upload" class="form-button"/>
-        </form>
     </div>
 
     <script>
@@ -50,12 +48,8 @@
             toggleForm('${pageContext.request.contextPath}/password');
         });
 
-        document.getElementById("profile-picture").addEventListener("click", function() {
-            document.getElementById("upload-photo-input").click();
-        });
-
-        document.getElementById("upload-photo-input").addEventListener("change", function() {
-            document.getElementById("upload-photo-form").submit();
+        document.getElementById("change-avatar-btn").addEventListener("click", function() {
+            toggleForm('${pageContext.request.contextPath}/profile/change-avatar');
         });
 
         function toggleForm(url) {

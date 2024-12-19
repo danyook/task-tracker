@@ -18,7 +18,7 @@ public class ConnectionProvider {
         return INSTANCE;
     }
 
-    private Connection con;
+    private static Connection con;
 
     private ConnectionProvider() throws DbException {
         try {
@@ -34,7 +34,7 @@ public class ConnectionProvider {
         }
     }
 
-    public Connection getCon() {
+    public static Connection getCon() {
         return con;
     }
 
