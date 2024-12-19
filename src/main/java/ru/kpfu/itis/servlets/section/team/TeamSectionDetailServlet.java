@@ -41,12 +41,11 @@ public class TeamSectionDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String teamIdParam = req.getParameter("team_id");
         req.setAttribute("team_id", teamIdParam);
-
         Integer sectionId = extractSectionId(req, resp);
+
         if (sectionId == null) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
-
         Section section = sectionService.findById(sectionId);
         if (section != null) {
             req.setAttribute("section", section);

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.servlets.task;
 
 import ru.kpfu.itis.entities.*;
+import ru.kpfu.itis.entities.enums.SectionRole;
 import ru.kpfu.itis.entities.enums.TaskStatus;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
@@ -57,12 +58,22 @@ public class CreateTaskServlet extends HttpServlet {
         task.setDateOfAdd(timestamp);
         task.setSection(section);
 
-        if (name == null || name.isEmpty()) {
-            resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
-        } else {
-            taskService.save(task);
-            resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
+        if (section.getRole() == SectionRole.SOLO) {
+            if (name == null || name.isEmpty()) {
+                resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
+            } else {
+                taskService.save(task);
+                resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
+            }
+        } else if (section.getRole() == SectionRole.TEAM) {
+            if (name == null || name.isEmpty()) {
+                resp.sendRedirect(req.getContextPath() + "/team-section/" + section_id);
+            } else {
+                taskService.save(task);
+                resp.sendRedirect(req.getContextPath() + "/team-section/" + section_id);
+            }
         }
+
 
 
     }

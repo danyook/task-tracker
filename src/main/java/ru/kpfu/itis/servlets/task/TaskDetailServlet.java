@@ -1,7 +1,9 @@
 package ru.kpfu.itis.servlets.task;
 
+import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.User;
+import ru.kpfu.itis.entities.enums.SectionRole;
 import ru.kpfu.itis.services.SectionService;
 import ru.kpfu.itis.services.TaskService;
 
@@ -82,11 +84,18 @@ public class TaskDetailServlet extends HttpServlet {
     protected void doPatch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int taskId = extractTaskId(req, resp);
         int sectionId = Integer.parseInt(req.getParameter("section_id"));
+        Section section = sectionService.findById(sectionId);
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         Task doneTask = taskService.findById(taskId);
 
         taskService.setDone(doneTask, new Date(), user.getId());
-        resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
+        if (section.getRole() == SectionRole.SOLO) {
+            resp.sendRedirect(req.getContextPath() + "/solo-section/" + sectionId);
+        } else if (section.getRole() == SectionRole.TEAM) {
+            resp.sendRedirect(req.getContextPath() + "/team-section/" + sectionId);
+
+        }
+
     }
 }

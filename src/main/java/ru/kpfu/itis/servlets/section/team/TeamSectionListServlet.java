@@ -27,7 +27,6 @@ public class TeamSectionListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String teamIdParam = req.getParameter("team_id");
         if (teamIdParam == null || teamIdParam.isEmpty()) {
-            System.out.println("sldjkflasjdf;a");
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         } else {
             int teamId = Integer.parseInt(teamIdParam);

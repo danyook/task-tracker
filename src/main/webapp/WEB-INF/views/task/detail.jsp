@@ -6,6 +6,8 @@
     <h2>Описание:</h2>
     <p>${task.getDescription()}</p>
     <a href="#" class="action-link" id="edit-task-link">Обновить задачу</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/team-section/${section_id}">Назад к списку задач</a>
     <form action="<c:url value='/task/${task.getId()}'/>" method="POST" class="delete-form">
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="hidden" name="section_id" value="${section_id}"/>

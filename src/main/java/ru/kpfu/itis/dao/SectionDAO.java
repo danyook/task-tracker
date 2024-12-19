@@ -47,6 +47,7 @@ public class SectionDAO {
     }
 
     public void save(Section section) {
+        System.out.println(section);
         if (section.getRole().equals(SectionRole.SOLO) && section.getUser() != null) {
             jdbcTemplate.update("INSERT INTO Section(name, type, role, person_id) VALUES(?, ?, ?, ?)",
                     section.getName(), section.getType().name(), section.getRole().name(), section.getUser().getId());

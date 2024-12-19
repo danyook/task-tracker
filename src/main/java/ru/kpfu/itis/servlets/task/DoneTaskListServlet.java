@@ -34,12 +34,4 @@ public class DoneTaskListServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/WEB-INF/views/section/done-tasks.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int taskId = Integer.parseInt(req.getParameter("task_id"));
-
-        taskService.setNotDone(taskId);
-
-        resp.sendRedirect(req.getContextPath() + "/done-tasks");
-    }
 }

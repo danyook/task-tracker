@@ -44,7 +44,7 @@ public class UpdateTeamSectionServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("section_id"));
 
         String name = req.getParameter("name");
-        SectionRole sectionRole = SectionRole.SOLO;
+        SectionRole sectionRole = SectionRole.TEAM;
         SectionType sectionType = SectionType.valueOf(req.getParameter("type").toUpperCase());
 
         HttpSession session = req.getSession();
