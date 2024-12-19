@@ -1,13 +1,17 @@
 package ru.kpfu.itis.entities;
 
-import lombok.Data;
+import lombok.*;
 import ru.kpfu.itis.entities.enums.SectionRole;
 import ru.kpfu.itis.entities.enums.SectionType;
 
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Section {
 
     private int id;

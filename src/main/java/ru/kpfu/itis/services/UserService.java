@@ -66,27 +66,6 @@ public class UserService {
         return (pass.equals(truePass));
     }
 
-//    public boolean checkingPassForChange(int userId, String oldPass, String newPassOne, String newPassTwo) {
-//        User user = userDAO.findById(userId);
-//        if (user == null) {
-//            throw new NotFoundUserException("User with this id not found");
-//        }
-//
-//        if (!user.getPassword().equals(oldPass)) {
-//            throw new OldPasswordDoesNotMatchException("Старый пароль не совпадает");
-//        }
-//
-//        if (!newPassOne.equals(newPassTwo)) {
-//            throw new NotCorrectPasswordException("Новые пароли не совпадают");
-//        }
-//
-//        return true;
-//    }
-//
-//    public void changePass(int userId, String newPass) {
-//        userService.changePass(userId, newPass);
-//    }
-
     public void updatePassword(int userId, String oldPass, String newPassOne, String newPassTwo) {
         User user = userDAO.findById(userId);
         if (user == null) {
@@ -104,4 +83,11 @@ public class UserService {
         userDAO.updatePassword(userId, newPassOne);
     }
 
+    public void updateUserProfilePhoto(int userId, String photoUrl) {
+        User user = userDAO.findById(userId);
+        if (user != null) {
+            user.setProfilePicture(photoUrl);
+            userDAO.update(userId, user);
+        }
+    }
 }

@@ -16,7 +16,7 @@
     <div class="profile-container">
         <div class="profile-content">
             <div class="profile-info">
-                <img src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg" alt="Profile Picture" class="profile-picture"/>
+                <img src="${sessionScope.user.profilePicture}" alt="Profile Picture" class="profile-picture" id="profile-picture"/>
                 <p><strong>Имя пользователя:</strong> ${sessionScope.user.username}</p>
                 <p><strong>Имя:</strong> ${sessionScope.user.name}</p>
                 <p><strong>Фамилия:</strong> ${sessionScope.user.surname}</p>
@@ -34,6 +34,11 @@
         <div class="form-container" id="form-container" style="display: none;">
             <!-- Здесь будет загружена форма редактирования профиля или смены пароля -->
         </div>
+
+        <form action="${pageContext.request.contextPath}/profile/upload-photo" method="post" enctype="multipart/form-data" id="upload-photo-form" style="display: none;">
+            <input type="file" name="image" id="upload-photo-input" accept="image/*"/>
+            <input type="submit" value="Upload" class="form-button"/>
+        </form>
     </div>
 
     <script>
@@ -43,6 +48,14 @@
 
         document.getElementById("change-password-btn").addEventListener("click", function() {
             toggleForm('${pageContext.request.contextPath}/password');
+        });
+
+        document.getElementById("profile-picture").addEventListener("click", function() {
+            document.getElementById("upload-photo-input").click();
+        });
+
+        document.getElementById("upload-photo-input").addEventListener("change", function() {
+            document.getElementById("upload-photo-form").submit();
         });
 
         function toggleForm(url) {

@@ -1,10 +1,14 @@
 package ru.kpfu.itis.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class User {
 
     private int id;
@@ -17,6 +21,7 @@ public class User {
 
     private String surname;
 
+    private String profilePicture;
 
 
     private List<Team> teams;
