@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="content">
-            <h4>Секция: ${section.name}</h4>
-            <h5>Задачи в этой секции</h5>
+            <h4>Список: ${section.name}</h4>
+            <h5>Задачи в этом списке</h5>
             <div class="section-list-container">
                 <ul class="section-list">
                     <c:forEach var="task" items="${tasks}">
@@ -37,7 +37,7 @@
             </div>
             <hr/>
             <a href="#" class="action-link" id="new-task-link">Создать новую задачу</a>
-            <a href="#" class="action-link" id="edit-section-link">Обновить список</a>
+            <a href="#" class="action-link" id="edit-section-link">Редактировать список</a>
             <form action="<c:url value='/solo-section/${section.id}'/>" method="POST" class="delete-form">
                 <input type="hidden" name="_method" value="DELETE"/>
                 <input type="submit" value="Удалить список!" class="delete-button"/>

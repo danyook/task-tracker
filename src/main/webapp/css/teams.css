@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e; /* Темный фон */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333333; /* Темнее, чем навбар */
+}
+
+.profile-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture-small {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start; /* Выровнять контейнеры по левому краю */
+    gap: 20px; /* Добавить расстояние между контейнерами */
+    flex-wrap: wrap; /* Позволяет контейнерам размещаться на новой строке при необходимости */
+}
+
+.content, .form-container, .task-detail-container, .edit-task-container {
+    background-color: #3c4a6b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 500px; /* Широкий контейнер */
+}
+
+.section-list-container {
+    background-color: #4a90e2;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.section-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.section-item {
+    background-color: #1c2c54;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Выравнивание задач и кнопок */
+    align-items: center;
+}
+
+.section-item a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    text-align: left; /* Выровнять текст по левому краю */
+}
+
+.section-item a:hover {
+    background-color: #357ab8;
+    border-radius: 5px;
+}
+
+.action-link {
+    display: block;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4a90e2;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%; /* Ширина как у других кнопок */
+    box-sizing: border-box; /* Учитывать отступы и границы */
+}
+
+.action-link:hover {
+    background-color: #357ab8;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content label,
+.form-content input,
+.form-content select {
+    margin-bottom: 10px;
+}
+
+.form-button {
+    background-color: #4a90e2;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-button:hover {
+    background-color: #357ab8;
+}
+
+/* Стили для детальной информации о команде */
+.team-detail {
+    background-color: #3c4a6b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 500px;
+}
+
+.team-detail h2 {
+    margin-top: 0;
+}
+
+.team-detail .section-list-container {
+    background-color: #4a90e2;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.team-detail .section-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team-detail .section-item {
+    background-color: #1c2c54;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Выровнять участников по центру */
+    align-items: center;
+    color: #ffffff;
+}
+
+.team-detail .delete-form {
+    margin-top: 10px;
+}
+
+.team-detail .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    width: 100%; /* Ширина как у других кнопок */
+    box-sizing: border-box; /* Учитывать отступы и границы */
+}
+
+.team-detail .delete-button:hover {
+    background-color: #e60000;
+}

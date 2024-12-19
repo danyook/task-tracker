@@ -50,10 +50,14 @@ public class CreateTeamServlet extends HttpServlet {
         team.setName(name);
         team.setOwner(user);
 
-        int savedTeamId = teamService.save(team);
-        teamService.addPersonToTeam(user.getId(), savedTeamId);
+        if (name == null || name.isEmpty()) {
+            resp.sendRedirect(req.getContextPath() + "/team");
+        } else {
+            int savedTeamId = teamService.save(team);
+            teamService.addPersonToTeam(user.getId(), savedTeamId);
 
-        resp.sendRedirect(req.getContextPath() + "/team");
+            resp.sendRedirect(req.getContextPath() + "/team");
+        }
 
     }
 

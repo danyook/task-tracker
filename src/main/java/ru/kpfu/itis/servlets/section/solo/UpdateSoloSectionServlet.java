@@ -33,6 +33,9 @@ public class UpdateSoloSectionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sectionIdParam = req.getParameter("section_id");
+        int sectionId = Integer.parseInt(sectionIdParam);
+        Section section = sectionService.findById(sectionId);
+        req.setAttribute("section", section);
         req.setAttribute("section_id", sectionIdParam);
         getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/edit.jsp").forward(req, resp);
 

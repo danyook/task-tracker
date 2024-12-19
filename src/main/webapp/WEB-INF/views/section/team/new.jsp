@@ -3,10 +3,10 @@
 
 <form action="<c:url value='/team-section/new'/>" method="POST" class="form-content">
     <input type="hidden" name="team_id" value="${team_id}"/>
-    <label for="name">Name:</label>
-    <input id="name" name="name" type="text" placeholder="Name" value="${name}" />
+    <label for="name">Название:</label>
+    <input id="name" name="name" type="text" placeholder="Name"/>
     <br/>
-    <label for="type">Type:</label>
+    <label for="type">Тип:</label>
     <select id="type" name="type">
         <option value="NOTE">Заметка</option>
         <option value="TASK">Задача</option>
