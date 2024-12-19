@@ -12,11 +12,9 @@
 
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 
-    <link rel="stylesheet" href="<c:url value="/style/bootstrap.min.css"/>">
-    <ling rel="stylesheet" href="<c:url value="/style/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
 </head>
 <body>
-    <br>
     <jsp:doBody/>
 <body/>
 <html/>

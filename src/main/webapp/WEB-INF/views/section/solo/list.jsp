@@ -4,26 +4,56 @@
 
 <t:mainLayout title="Main page">
 
-    <div class="text-info">Lists:</div>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/tasks.css">
 
-    <ul>
-        <c:forEach var="section" items="${sections}">
-            <li>
-                <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">${section.getName()}</a>
-            </li>
-        </c:forEach>
-    </ul>
+    <div class="header">
+        <a href="${pageContext.request.contextPath}/profile" class="profile-link">
+            <img src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg" alt="Profile Picture" class="profile-picture-small"/>
+            Профиль
+        </a>
+    </div>
 
-    <a href="${pageContext.request.contextPath}/done-tasks">Архив выполненных задач</a>
+    <div class="container">
+        <div class="content">
+            <h2>Списки</h2>
+            <div class="section-list-container">
+                <ul class="section-list">
+                    <c:forEach var="section" items="${sections}">
+                        <li class="section-item">
+                            <a href="${pageContext.request.contextPath}/solo-section/${section.getId()}">${section.getName()}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+            <hr/>
+            <a href="#" class="action-link" id="new-section-link">Создать новый список</a>
+            <a href="${pageContext.request.contextPath}/done-tasks" class="action-link">Архив выполненных задач</a>
+        </div>
 
-    <br/>
-    <hr/>
+        <div class="form-container" id="form-container" style="display: none;">
+            <!-- Здесь будет загружена форма создания новой секции -->
+        </div>
+    </div>
 
-    <a href="${pageContext.request.contextPath}/solo-section/new">Создать новый список</a>
+    <script>
+        document.getElementById("new-section-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            toggleForm('${pageContext.request.contextPath}/solo-section/new');
+        });
 
-    <br>
-
+        function toggleForm(url) {
+            var formContainer = document.getElementById("form-container");
+            if (formContainer.style.display === "none" || formContainer.innerHTML === "") {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        formContainer.innerHTML = html;
+                        formContainer.style.display = "block";
+                    });
+            } else {
+                formContainer.style.display = "none";
+                formContainer.innerHTML = "";
+            }
+        }
+    </script>
 </t:mainLayout>
-
-
-

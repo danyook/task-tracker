@@ -36,6 +36,7 @@ public class CreateSoloSectionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
+
         SectionRole sectionRole = SectionRole.SOLO;
         SectionType sectionType = SectionType.valueOf(req.getParameter("type").toUpperCase());
 
@@ -49,9 +50,12 @@ public class CreateSoloSectionServlet extends HttpServlet {
         section.setType(sectionType);
         section.setUser(user);
 
-        sectionService.save(section);
-
-        resp.sendRedirect(req.getContextPath() + "/solo-section");
+        if (name == null || name.isEmpty()) {
+            resp.sendRedirect(req.getContextPath() + "/solo-section");
+        } else {
+            sectionService.save(section);
+            resp.sendRedirect(req.getContextPath() + "/solo-section");
+        }
 
     }
 

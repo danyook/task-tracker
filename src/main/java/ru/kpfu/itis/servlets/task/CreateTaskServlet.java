@@ -57,9 +57,13 @@ public class CreateTaskServlet extends HttpServlet {
         task.setDateOfAdd(timestamp);
         task.setSection(section);
 
-        taskService.save(task);
+        if (name == null || name.isEmpty()) {
+            resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
+        } else {
+            taskService.save(task);
+            resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
+        }
 
-        resp.sendRedirect(req.getContextPath() + "/solo-section/" + section_id);
 
     }
 
