@@ -18,6 +18,10 @@
         <label for="surname">Фамилия:</label>
         <input name="surname" id="surname" type="text" placeholder="Фамилия" value="${sessionScope.user.surname}"/>
 
+        <c:if test="${not empty error}">
+            <div class="error-message">${error}</div>
+        </c:if>
+
         <input type="submit" value="Обновить профиль!"/>
     </form>
 </div>

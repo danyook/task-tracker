@@ -103,4 +103,13 @@ public class UserService {
         avatarDAO.delete(userId);
     }
 
+    public boolean checkUsername(String username) {
+        User user = userDAO.findByUsername(username);
+        if (user == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

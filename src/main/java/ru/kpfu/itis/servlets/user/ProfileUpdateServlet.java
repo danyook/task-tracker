@@ -48,10 +48,16 @@ public class ProfileUpdateServlet extends HttpServlet {
         updatedUser.setSurname(surname);
         updatedUser.setPassword(user.getPassword());
 
-        userService.update(user.getId(), updatedUser);
+        if (userService.checkUsername(username) || user.getUsername().equals(username)) {
+            userService.update(user.getId(), updatedUser);
 
-        httpSession.setAttribute("user", updatedUser);
-        httpSession.setMaxInactiveInterval(60 * 60);
-        resp.sendRedirect(req.getContextPath() + "/profile");
+            httpSession.setAttribute("user", updatedUser);
+            httpSession.setMaxInactiveInterval(60 * 60);
+            resp.sendRedirect(req.getContextPath() + "/profile");
+        } else {
+            req.setAttribute("error", "Такой логин уже существует");
+            req.getRequestDispatcher("/WEB-INF/views/user/profile.jsp").forward(req, resp);
+        }
+
     }
 }
