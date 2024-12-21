@@ -19,6 +19,7 @@
             <h1>Редактировать задачу</h1>
             <form action="<c:url value='/task/edit'/>" method="POST" class="form-content">
                 <input type="hidden" name="section_id" value="${section_id}"/>
+                <input type="hidden" name="section_id" value="${team_id}"/>
                 <input type="hidden" name="task_id" value="${task_id}"/>
                 <label for="name">Название:</label>
                 <input id="name" name="name" type="text" placeholder="Name" value="${task.name}"/>
@@ -32,7 +33,7 @@
                     <a href="${pageContext.request.contextPath}/solo-section/${section_id}" class="action-link">Назад к списку задач</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="${pageContext.request.contextPath}/team-section/${section_id}" class="action-link">Назад к списку задач</a>
+                    <a href="${pageContext.request.contextPath}/team-section/${section_id}?team_id=" class="action-link">Назад к списку задач</a>
                 </c:otherwise>
             </c:choose>
         </div>
