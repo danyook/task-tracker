@@ -47,12 +47,18 @@ public class RegistrationServlet extends HttpServlet {
         user.setSurname(surname);
         user.setUsername(username);
         user.setPassword(password);
-        userService.save(user);
 
-        HttpSession session = req.getSession();
-        session.setAttribute("user", user);
+        if (userService.checkUsername(username)) {
+            userService.save(user);
 
-        resp.sendRedirect(req.getContextPath() + "/profile");
+            HttpSession session = req.getSession();
+            session.setAttribute("user", user);
+
+            resp.sendRedirect(req.getContextPath() + "/profile");
+        } else {
+            req.getRequestDispatcher("/WEB-INF/views/user/registration.jsp").forward(req, resp);
+        }
+
     }
 }
 
