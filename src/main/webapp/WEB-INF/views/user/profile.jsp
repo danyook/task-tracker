@@ -17,7 +17,7 @@
         <div class="profile-content">
             <div class="profile-info">
                 <div class="avatar">
-                    <img src="${urlPhoto}" alt="Avatar" class="rounded-circle" width="200" height="200" id="profile-avatar"/>
+                    <img src="${urlPhoto}" alt="Avatar" class="rounded-circle" width="200" height="200" />
                 </div>
                 <p><strong>Имя пользователя:</strong> ${sessionScope.user.username}</p>
                 <p><strong>Имя:</strong> ${sessionScope.user.name}</p>

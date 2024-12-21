@@ -73,7 +73,6 @@ public class TeamSectionDetailServlet extends HttpServlet {
             System.out.println("team id param null");
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
-        System.out.println("team id param done");
         int teamId = Integer.parseInt(teamIdParam);
 
         if (sectionId == null) {
