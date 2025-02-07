@@ -26,8 +26,8 @@ public class ConnectionProvider {
 
             Class.forName(DbConfig.getDatabaseDriver()).newInstance();
             con = DriverManager.getConnection(DbConfig.getDatabaseUrl(),
-                    DbConfig.getDatabaseUsername(),
-                    DbConfig.getDatabasePassword());
+                                              DbConfig.getDatabaseUsername(),
+                                              DbConfig.getDatabasePassword());
 
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new DbException("Can't connect to DB.", e);
