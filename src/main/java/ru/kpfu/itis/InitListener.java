@@ -48,9 +48,9 @@ public class InitListener implements ServletContextListener {
             sce.getServletContext().setAttribute("userService", userService);
             sce.getServletContext().setAttribute("cloudinaryService", cloudinaryService);
 
-            ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
-
-            JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
+//            ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
+//
+//            JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
 
         } catch (DbException e) {
             log.info("Initialization failed");
