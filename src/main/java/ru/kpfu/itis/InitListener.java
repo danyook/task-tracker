@@ -24,7 +24,9 @@ public class InitListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try {
 
+            ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
 
+            JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
 
             SectionDAO sectionDAO = SectionDAO.getInstance();
             TaskDAO taskDAO = TaskDAO.getInstance();
@@ -48,9 +50,7 @@ public class InitListener implements ServletContextListener {
             sce.getServletContext().setAttribute("userService", userService);
             sce.getServletContext().setAttribute("cloudinaryService", cloudinaryService);
 
-//            ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
-//
-//            JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
+
 
         } catch (DbException e) {
             log.info("Initialization failed");
