@@ -41,8 +41,8 @@ public class UserService {
         return userDAO.findByTeamId(teamId);
     }
 
-    public void save(User section) {
-        userDAO.save(section);
+    public int save(User section) {
+        return userDAO.save(section);
     }
 
     public void update(int id, User updatedUser) {

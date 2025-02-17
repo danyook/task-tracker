@@ -43,9 +43,9 @@ public class UserDAO {
                         and person_team.team_id = ?""", mapper, teamId);
     }
 
-    public void save(User user) {
-        jdbcTemplate.update("INSERT INTO Person(username, name, surname, password) VALUES(?, ?, ?, ?)",
-                user.getUsername(), user.getName(), user.getSurname(), user.getPassword());
+    public int save(User user) {
+        return jdbcTemplate.queryForObject("INSERT INTO Person(username, name, surname, password) VALUES(?, ?, ?, ?) RETURNING id",
+                new Object[]{user.getUsername(), user.getName(), user.getSurname(), user.getPassword()}, Integer.class);
     }
 
     public void update(int id, User updatedUser) {

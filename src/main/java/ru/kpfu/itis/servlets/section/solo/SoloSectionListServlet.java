@@ -17,13 +17,10 @@ import java.io.IOException;
 public class SoloSectionListServlet extends HttpServlet {
 
     private SectionService sectionService;
-    private UserService userService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        userService = (UserService) getServletContext().getAttribute("userService");
-
     }
 
     @Override
@@ -31,8 +28,6 @@ public class SoloSectionListServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         req.setAttribute("sections", sectionService.findByUserId(user.getId()));
-        getServletContext().getRequestDispatcher("/WEB-INF/views/section/solo/list.jsp").forward(req, resp);
-
+        req.getRequestDispatcher("/WEB-INF/views/section/solo/list.jsp").forward(req, resp);
     }
-
 }

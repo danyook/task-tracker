@@ -49,7 +49,8 @@ public class RegistrationServlet extends HttpServlet {
         user.setPassword(password);
 
         if (userService.checkUsername(username)) {
-            userService.save(user);
+            int userId = userService.save(user);
+            user.setId(userId);
 
             HttpSession session = req.getSession();
             session.setAttribute("user", user);

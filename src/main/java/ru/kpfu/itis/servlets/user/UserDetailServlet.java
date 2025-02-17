@@ -30,6 +30,6 @@ public class UserDetailServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         int userId = user.getId();
         req.setAttribute("urlPhoto", userService.getPhotoUrl(userId));
-        getServletContext().getRequestDispatcher("/WEB-INF/views/user/profile.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/user/profile.jsp").forward(req, resp);
     }
 }
