@@ -21,8 +21,6 @@ public class InitListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try {
 
-//            ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
-
             JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
 
             SectionDAO sectionDAO = SectionDAO.getInstance();
