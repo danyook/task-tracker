@@ -21,13 +21,11 @@ import java.util.Date;
 public class CreateTaskServlet extends HttpServlet {
 
     private SectionService sectionService;
-    private UserService userService;
     private TaskService taskService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        userService = (UserService) getServletContext().getAttribute("userService");
         taskService = (TaskService) getServletContext().getAttribute("taskService");
     }
 

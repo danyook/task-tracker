@@ -5,7 +5,6 @@ import ru.kpfu.itis.dao.mappers.DoneTaskMapper;
 import ru.kpfu.itis.dao.mappers.TaskMapper;
 import ru.kpfu.itis.entities.Task;
 import ru.kpfu.itis.entities.enums.TaskStatus;
-import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.Date;
@@ -13,7 +12,6 @@ import java.util.List;
 
 public class TaskDAO {
     private static TaskDAO INSTANCE;
-    private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
     private TaskMapper taskMapper = new TaskMapper();
     private DoneTaskMapper doneTaskMapper = new DoneTaskMapper();

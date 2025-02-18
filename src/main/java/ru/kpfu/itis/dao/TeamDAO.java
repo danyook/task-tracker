@@ -1,18 +1,14 @@
 package ru.kpfu.itis.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import ru.kpfu.itis.dao.mappers.TeamMapper;
 import ru.kpfu.itis.entities.Team;
-import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.List;
 
 public class TeamDAO {
     private static TeamDAO INSTANCE;
-    private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
     private UserDAO userDAO = UserDAO.getInstance();
     private TeamMapper mapper = new TeamMapper(userDAO);

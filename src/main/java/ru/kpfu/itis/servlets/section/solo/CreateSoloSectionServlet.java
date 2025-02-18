@@ -20,12 +20,10 @@ import java.io.IOException;
 public class CreateSoloSectionServlet extends HttpServlet {
 
     private SectionService sectionService;
-    private UserService userService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        userService = (UserService) getServletContext().getAttribute("userService");
     }
 
     @Override

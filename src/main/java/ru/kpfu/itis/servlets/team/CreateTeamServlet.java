@@ -21,14 +21,10 @@ import java.io.IOException;
 @WebServlet("/team/new")
 public class CreateTeamServlet extends HttpServlet {
 
-    private SectionService sectionService;
-    private UserService userService;
     private TeamService teamService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        userService = (UserService) getServletContext().getAttribute("userService");
         teamService = (TeamService) getServletContext().getAttribute("teamService");
     }
 

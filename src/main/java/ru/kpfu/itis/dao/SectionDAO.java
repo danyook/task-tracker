@@ -4,14 +4,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import ru.kpfu.itis.dao.mappers.SectionMapper;
 import ru.kpfu.itis.entities.Section;
 import ru.kpfu.itis.entities.enums.SectionRole;
-import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 
 import java.util.List;
 
 public class SectionDAO {
     private static SectionDAO INSTANCE;
-    private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
     private SectionMapper mapper = new SectionMapper();
 

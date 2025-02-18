@@ -19,15 +19,11 @@ import java.util.List;
 
 @WebServlet("/team/edit")
 public class UpdateTeamServlet extends HttpServlet {
-    private SectionService sectionService;
-    private TaskService taskService;
     private UserService userService;
     private TeamService teamService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        taskService = (TaskService) getServletContext().getAttribute("taskService");
         userService = (UserService) getServletContext().getAttribute("userService");
         teamService = (TeamService) getServletContext().getAttribute("teamService");
     }
@@ -50,11 +46,9 @@ public class UpdateTeamServlet extends HttpServlet {
         int teamId = Integer.parseInt(req.getParameter("team_id"));
         Team team = teamService.findById(teamId);
 
-        // Assuming user authentication info is stored in the session
         User user = (User) req.getSession().getAttribute("user");
 
-        // Check if the current user is the owner of the team
-        if (!team.getOwner().equals(user)) {
+        if (!team.getOwner().getUsername().equals(user.getUsername())) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN, "You are not authorized to update this team.");
             return;
         }

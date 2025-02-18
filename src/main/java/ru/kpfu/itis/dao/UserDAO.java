@@ -3,7 +3,6 @@ package ru.kpfu.itis.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.kpfu.itis.dao.mappers.UserMapper;
 import ru.kpfu.itis.entities.User;
-import ru.kpfu.itis.util.ConnectionProvider;
 import ru.kpfu.itis.util.JdbcTemplateProvider;
 import ru.kpfu.itis.util.PassEncrypt;
 
@@ -11,7 +10,6 @@ import java.util.List;
 
 public class UserDAO {
     private static UserDAO INSTANCE;
-    private ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
     private JdbcTemplate jdbcTemplate = JdbcTemplateProvider.getJdbcTemplate();
     private UserMapper mapper = new UserMapper();
 

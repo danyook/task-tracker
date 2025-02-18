@@ -17,12 +17,10 @@ import java.io.IOException;
 public class ProfileUpdateServlet extends HttpServlet {
 
     private UserService userService;
-    private TeamService teamService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         userService = (UserService) getServletContext().getAttribute("userService");
-        teamService = (TeamService) getServletContext().getAttribute("teamService");
     }
 
     @Override

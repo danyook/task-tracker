@@ -20,14 +20,10 @@ import java.io.IOException;
 @WebServlet("/solo-section/edit")
 public class UpdateSoloSectionServlet extends HttpServlet {
     private SectionService sectionService;
-    private TaskService taskService;
-    private UserService userService;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         sectionService = (SectionService) getServletContext().getAttribute("sectionService");
-        taskService = (TaskService) getServletContext().getAttribute("taskService");
-        userService = (UserService) getServletContext().getAttribute("userService");
     }
 
     @Override
